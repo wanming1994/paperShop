@@ -1,0 +1,119 @@
+<view class="container">
+  <view class="number f20 padding2 border_bottom">
+    共有{{sum}}包可提
+  </view>
+  <view class="checkout">
+    <view wx:for="{{data}}" wx:key="id">
+      <view>{{item.name}}</view>
+      <view class="checkout-item">
+        <block wx:for="{{item.userECouponsInfoDtoList}}" wx:key="id" wx:for-item="zItem">
+          <view>
+            <image src="{{zItem.listPicUrl?zItem.listPicUrl:'/resources/images/member/nbs.jpg'}}" data-id="{{item.id}}" data-ecouponsid="{{zItem.ecouponsId}}" data-name="{{item.name}}" data-ecouponsname="{{zItem.ecouponsName}}" data-ecouponstype="{{zItem.ecouponsType}}" data-count="{{zItem.ecouponsCnt}}"
+              bindtap="select"></image>
+            <view class='f14 baseColor'>{{zItem.ecouponsCnt}}(包)</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+  <view class='lineItem lineItem_access f14 padding2 address' bindtap='chooseAddress'>
+    <view class='left' wx:if="{{address}}">
+      <text class='iconfont icon-dizhi f66 address_icon'></text>
+    </view>
+    <view class='left' wx:if="{{!address}}">
+      <text class='iconfont icon-dizhi f66 address_icon' style='margin-top:12rpx'></text>
+    </view>
+    <view class='center lineH_two' wx:if="{{address}}">
+      <view>{{address.userName}} {{address.telNumber}}</view>
+      <view class='clr_orange'>{{address.provinceName}}{{address.cityName}}{{address.countyName}}{{address.detailInfo}}</view>
+    </view>
+    <view class='center lineH_two' wx:if="{{!address}}">
+      <view class='clr_red'>请选择收货地址</view>
+    </view>
+    <view class='right'></view>
+  </view>
+
+  <view class="selectedList">
+    <block wx:for="{{cartList}}" wx:key="index">
+      <view class="selected lineItem border_bottom">
+        <view class="left clr_lightGray">
+          <image src='{{item.list_pic_url||"../../../resources/images/member/nbs.jpg"}}'></image>
+        </view>
+        <view class="center">
+          <view class='f16'>规格：{{item.goods_specifition_name_value}}
+          </view>
+          <view class='f12 clr_lightGray buyType'>{{item.goods_name}}</view>
+        </view>
+        <view class="right amount">
+          <button data-id="{{item.goods_specifition_ids}}" data-btype="reduce" bindtap="revisenum">-</button>
+          <input data-id="{{item.goods_specifition_ids}}" value="{{item.number}}" class="f12" type="number" data-btype="input" bindchange="revisenum" />
+          <button data-id="{{item.goods_specifition_ids}}" data-btype="add" bindtap="revisenum">+</button>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="buy f16" wx:if="{{cartList.length>0}}">
+    <view class='buyAmount'>实付款：{{freight}}元</view>
+    <view class='buySubmit' bindtap='buySubmit'>结算</view>
+  </view>
+
+  <view class="actionMask" catchtouchmove="catchActionMask" hidden="{{!showAction}}" bindtap="toggleMask"></view>
+  <view class="actionMask" catchtouchmove="catchActionMask" hidden="{{!showBuyDetail}}" bindtap="toggleMaskPay"></view>
+  <view class="actionContent" hidden="{{!showAction}}">
+    <view class="actionTitle border_bottom lineItem">
+      <view class="left">
+        <block wx:for="{{actionData.specifications}}" wx:for-item="sitem" wx:key="id">
+          <image wx:if="{{actionData.goods_specifition_ids==sitem.id}}" src="{{sitem.pic_url||'../../../resources/images/member/nbs.jpg'}}"></image>
+        </block>
+      </view>
+      <view class="center f14">
+        <view class="f16 clr_orange bold">{{actionData.goods_name}}</view>
+        <!-- <view>库存{{selectData.count}}件</view> -->
+        <view>已选
+          <text class="clr_orange">{{actionData.number}}包</text>
+        </view>
+      </view>
+      <view class="right" bindtap="toggleMask">
+        <image src="/resources/images/icon/close.png"></image>
+      </view>
+    </view>
+    <view class="actionSpecifications border_bottom">
+      <view class="actionItemTitle f16">{{actionData.specifications[0].name}}：</view>
+      <view class="actionItemBtn f16">
+        <block wx:for="{{actionData.specifications}}" wx:for-item="citem" wx:key="id" wx:for-index="iindex">
+          <text bindtap="checkout" data-index="{{iindex}}" data-id="{{citem.id}}" class="{{citem.id==actionData.goods_specifition_ids?'active':''}}">{{citem.value}}</text>
+        </block>
+      </view>
+    </view>
+    <view class="actionNumber border_bottom lineItem" style="align-items:center;">
+      <view class="f16 ">提货数量:</view>
+      <view class="amount">
+        <button data-btype="reduce" data-id="{{actionData.goods_specifition_ids}}" bindtap="revisenum">-</button>
+        <input class="f12" data-id="{{actionData.goods_specifition_ids}}" type="number" data-btype="input" bindchange="revisenum" value="{{actionData.number}}" />
+        <button data-btype="add" data-id="{{actionData.goods_specifition_ids}}" bindtap="revisenum">+</button>
+      </view>
+    </view>
+    <button class="defaultBtn " bindtap="paySubmit">确认</button>
+  </view>
+</view>
+
+<view class="actionNext f22" hidden="{{!showBuyDetail}}">
+  <image class="nextClose" bindtap="closeMask" src="/resources/images/icon/close.png"></image>
+  <view>
+    <view class="nextTitle">小计:</view>
+    <view>{{actual_price}}元</view>
+  </view>
+  <!-- <view>
+    <view class="nextTitle">使用积分:</view>
+    <view>
+      <input bindinput="userScoreInput" value="{{userScoreInput}}"></input>
+    </view>分
+  </view> -->
+  <view>
+    <view class="nextTitle">实付金额:</view>
+    <view>￥{{trueAmount}}元</view>
+    <!-- <view><text class='f12 clr_red'>（积分抵{{scoreMoney}}元）</text></view> -->
+  </view>
+  <view bindtap="toBuyConfirm" class="nextBtn f16">去付款</view>
+</view>

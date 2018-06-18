@@ -1,0 +1,23 @@
+/* pages/member/share/share.wxss */
+.shareWrap{
+  background: #fff;
+  margin: 4%;
+  border-radius: 8px;
+  box-shadow: 0 0 5px #aaa;
+}
+.shareWrap .title{
+  display: inline-block;
+  padding: 30rpx 0;
+}
+.shareWrap .imgWrap{
+  width: 82vw;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.shareWrap .imgWrap image{
+  width: 100%;
+  padding-bottom: 4%;
+}
+.desc{
+  margin-top: 10px;
+}

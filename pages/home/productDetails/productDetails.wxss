@@ -1,0 +1,408 @@
+/* 商品列表 */
+@import '/template/productList/productListTemp.wxss';
+@import "../../wxParse/wxParse.wxss";
+
+page {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.category {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  /* display:flex; */
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.cetagory_btn.active {
+  color: #fff;
+  background: #ffa73d;
+}
+
+.cetagory_btn {
+  background: #fff;
+  padding: 3rpx 10rpx;
+  margin: 0 10rpx;
+  border-radius: 10rpx;
+  /* display: inline-block; */
+}
+
+.video_btn {
+  display: inline-block;
+}
+
+.scrollView {
+  width: 100%;
+  padding-bottom: 104rpx;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.border_bottom::after {
+  bottom: 0;
+}
+
+.title, .evaluation, .recommend {
+  background: #fff;
+}
+
+.tab {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  height: 104rpx;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.tab::after {
+  content: "";
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top: 1px solid #d9d9d9;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleY(0.5);
+  transform: scaleY(0.5);
+}
+
+.tab .right view {
+  width: 100%;
+  height: 100%;
+  line-height: 104rpx;
+}
+
+.tab>view {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tab button::after {
+  display: none;
+}
+
+.tab .left>view, button {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #999;
+  border: none;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.6;
+}
+
+.tab .left {
+  flex: 1;
+}
+
+.tab .right {
+  flex: 2;
+}
+
+.tab image {
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.actionMask {
+  /* position: absolute; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  box-sizing: border-box;
+}
+
+.actionContent {
+  /* position: absolute; */
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  left: 0;
+  bottom: 0;
+  z-index: 10002;
+}
+
+.actionNext {
+  position: fixed;
+  width: 86vw;
+  height: 50vh;
+  background: #fff;
+  border-radius: 20px;
+  top: 16%;
+  left: 7vw;
+  z-index: 10003;
+  padding: 5%;
+  box-sizing: border-box;
+}
+
+.actionNext>view {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  line-height: 10vh;
+  justify-content: flex-start;
+}
+
+.actionNext input {
+  float: left;
+  width: 40vw;
+  height: 10vh;
+  line-height: 10vh;
+}
+
+.nextBtn {
+  background: #ff666a;
+  color: #fff;
+  display: block !important;
+  width: 50%;
+  padding: 5px 20px;
+  border-radius: 5px;
+  margin: 5vh auto 0;
+  text-align: center;
+  line-height: 2 !important;
+}
+
+.nextTitle {
+  min-width: 30vw;
+}
+
+.nextClose {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  right: 5%;
+}
+
+.actionTitle {
+  padding: 0 20rpx;
+}
+
+/* view {
+  overflow: visible;
+} */
+
+.actionTitle .left image {
+  width: 160rpx;
+  height: 160rpx;
+  position: relative;
+  top: -40rpx;
+}
+
+.actionTitle .center {
+  padding-left: 20rpx;
+}
+
+.actionTitle .right image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.actionSpecifications {
+  padding: 2% 20rpx;
+}
+
+.actionItemBtn {
+  padding: 20rpx 0;
+}
+
+.actionItemBtn text {
+  display: inline-block;
+  padding: 10rpx 20rpx;
+  margin: 0 20rpx 20rpx 0;
+  white-space: nowrap;
+  background: #efeff4;
+  color: #999;
+  border-radius: 12rpx;
+}
+
+.actionItemBtn text.active {
+  background: #ffa73d !important;
+  color: #fff !important;
+}
+
+.actionItemBtn text.canTap {
+  color: #000;
+}
+
+.actionNumber {
+  padding: 2% 20rpx;
+}
+
+.actionNumber .amount {
+  display: flex;
+  width: 210rpx;
+  position: relative;
+}
+
+.actionNumber .amount::after {
+  content: " ";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.actionNumber .amount input {
+  display: block;
+  position: relative;
+}
+
+.actionNumber .amount input::after {
+  content: " ";
+  width: 200%;
+  height: 200%;
+  overflow-x: scroll;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  box-sizing: border-box;
+}
+
+.actionNumber .amount button, .amount input {
+  width: 70rpx;
+  height: 70rpx !important;
+  min-height: 70rpx !important;
+  padding: 0;
+  margin: 0;
+  line-height: 70rpx !important;
+  background: #fff;
+  text-align: center;
+  background: transparent;
+  z-index: 999;
+}
+
+.actionNumber .amount button::after {
+  border: none !important;
+}
+
+.defaultBtn {
+  margin: 20rpx auto 60rpx;
+}
+
+.shortcut {
+  position: fixed;
+  bottom: 25vw;
+  right: 6vw;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  color: #fff;
+  width: 13vw;
+  height: 13vw;
+  /* padding: 2vw 0; *//* padding: 1.7vw 0 1.3vw; */
+  text-align: center;
+  z-index: 1002;
+}
+
+.shortcut view {
+  line-height: 5vw;
+}
+
+.shortcut view:first-child {
+  margin-top: 1.8vw;
+}
+
+.shortcut view:last-child {
+  margin-bottom: 1.8vw;
+}
+
+.shortcutClose {
+  width: 12vw;
+  height: 12vw;
+  line-height: 12vw;
+  padding: 0;
+  background: transparent;
+}
+.shortcutClose image{
+  width: 12vw;
+  height: 12vw;
+}
+
+.shortcutInfo {
+  position: fixed;
+  height: 24vw;
+  right: 7vw;
+  bottom: 37vw;
+  color: #fff;
+  z-index: 1002;
+  overflow: hidden;
+}
+
+.shortcutContent {
+  margin-top: 50vw;
+  transition: 0.5s all;
+}
+
+.showShortcutContent {
+  margin-top: 0;
+}
+
+.shortcutInfoList {
+  height: 10vw;
+  line-height: 10vw;
+  margin-bottom: 2vw;
+  z-index: 99999;
+}
+
+.shortcutInfoList button {
+  padding: 0;
+  display: inline-block;
+  background: transparent;
+  overflow: visible;
+}
+
+.shortcutInfoList button::after,::before {
+  display: none;
+}
+
+.shortcutInfo text {
+  line-height: 10vw;
+  display: inline-block;
+}
+
+.shortcutInfo image {
+  width: 10vw;
+  height: 10vw;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 2vw;
+}

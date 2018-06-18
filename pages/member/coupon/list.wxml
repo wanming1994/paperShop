@@ -1,0 +1,27 @@
+<view class="container">
+  <view class="voucher">
+   <block wx:if="{{data.length>0}}">
+     <view class="list-ul">
+      <view class="list-li" wx:for="{{data}}" wx:key="id" wx:for-item="item">
+        <view class="list-a">
+          <view class="li-title">
+            <text class="li-h">{{item.name}}</text>
+            <text class="li-em useCoupon" wx:if="{{item.used}}">已使用</text>
+            <text class="li-em" wx:if="{{!item.used}}">未使用</text>
+          </view>
+          <text class="li-time">有效期{{item.use_start_date}}--{{item.use_end_date}}</text>
+          <view class="li-price">
+            <text class="pri-icon">¥</text>
+            <text class="pri-b">{{item.type_money}}</text>
+          </view>
+          <text class="pri-span">优惠券</text>
+          <text class="pri-p">消费满{{item.min_goods_amount}}元使用</text>
+        </view>
+      </view>
+    </view>
+   </block>
+   <block wx:if="{{data.length==0}}">
+      <view class='tips'>暂无优惠券</view>
+   </block>
+  </view>
+</view>

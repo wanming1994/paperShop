@@ -1,0 +1,368 @@
+page {
+  overflow: hidden;
+  width: 100%;
+  padding-bottom: 100rpx;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.address, .toStore, .tenant {
+  margin-top: 1.33vw;
+}
+
+.address_icon {
+  margin-top: 1em;
+}
+
+.number {
+  width: 100%;
+  text-align: center;
+  background: #fff;
+}
+
+.checkout {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  background: #fff;
+}
+
+.checkout>view {
+  flex: 1;
+  padding: 0 1%;
+  text-align: center;
+  line-height: 2;
+}
+
+.checkout-item {
+  display: flex;
+  position: relative;
+}
+
+.checkout-item>view {
+  width: 49%;
+  margin: 0 0.25%;
+}
+
+.checkout image {
+  display: block;
+  width: 100%;
+  height: 200rpx;
+}
+
+.address {
+  border: 1px solid #eee;
+  padding: 5% 2%;
+  background: #fff;
+}
+
+.lineItem {
+  align-items: center;
+}
+
+.selected .left {
+  margin-right: 60rpx;
+}
+
+.selected .left  image {
+  width: 20vw;
+  height: 20vw;
+}
+
+.selected .buyType {
+  margin-top: 2vw;
+}
+
+.selected .right.amount {
+  display: flex;
+  flex-direction: row;
+}
+
+.amount {
+  display: flex;
+  width: 180rpx;
+  position: relative;
+}
+
+.amount::after {
+  content: " ";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.amount button, .amount input {
+  width: 60rpx;
+  height: 60rpx !important;
+  min-height: 60rpx !important;
+  padding: 0;
+  margin: 0;
+  line-height: 60rpx !important;
+  background: #fff;
+  text-align: center;
+  background: transparent;
+  z-index: 999;
+}
+
+.amount button::after {
+  border: none !important;
+}
+
+.amount input {
+  display: block;
+  position: relative;
+}
+
+.amount input::after {
+  content: " ";
+  width: 200%;
+  height: 200%;
+  overflow-x: scroll;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  box-sizing: border-box;
+}
+
+.buy {
+  background: #ff666a;
+  position: fixed;
+  z-index: 99;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  box-sizing: border-box;
+  color: #fff;
+  text-align: center;
+  display: flex;
+}
+
+.buy .buyAmount {
+  flex: 3;
+  background: #fff;
+  color: #ff666a;
+  text-align: center;
+}
+
+.buy .buySubmit {
+  flex: 1;
+}
+
+.actionMask {
+  /* position: absolute; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  box-sizing: border-box;
+}
+
+.actionContent {
+  /* position: absolute; */
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  left: 0;
+  bottom: 0;
+  z-index: 10002;
+}
+
+.actionTitle {
+  padding: 0 20rpx;
+}
+
+view {
+  overflow: visible;
+}
+
+.actionTitle .left image {
+  width: 160rpx;
+  height: 160rpx;
+  position: relative;
+  top: -40rpx;
+}
+
+.actionTitle .center {
+  padding-left: 20rpx;
+}
+
+.actionTitle .right image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.actionSpecifications {
+  padding: 2% 20rpx;
+}
+
+.actionItemBtn {
+  padding: 20rpx 0;
+}
+
+.actionItemBtn text {
+  display: inline-block;
+  padding: 10rpx 20rpx;
+  margin: 0 20rpx 20rpx 0;
+  white-space: nowrap;
+  background: #efeff4;
+  color: #999;
+  border-radius: 12rpx;
+}
+
+.actionItemBtn text.active {
+  background: #ffa73d !important;
+  color: #fff !important;
+}
+
+.actionItemBtn text.canTap {
+  color: #000;
+}
+
+.actionNumber {
+  padding: 2% 20rpx;
+}
+
+.actionNumber .amount {
+  display: flex;
+  width: 210rpx;
+  position: relative;
+}
+
+.actionNumber .amount::after {
+  content: " ";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.actionNumber .amount input {
+  display: block;
+  position: relative;
+}
+
+.actionNumber .amount input::after {
+  content: " ";
+  width: 200%;
+  height: 200%;
+  overflow-x: scroll;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  box-sizing: border-box;
+}
+
+.actionNumber .amount button, .amount input {
+  width: 70rpx;
+  height: 70rpx !important;
+  min-height: 70rpx !important;
+  padding: 0;
+  margin: 0;
+  line-height: 70rpx !important;
+  background: #fff;
+  text-align: center;
+  background: transparent;
+  z-index: 999;
+}
+
+.actionNumber .amount button::after {
+  border: none !important;
+}
+
+.defaultBtn {
+  margin: 20rpx auto 60rpx;
+}
+
+.actionNext {
+  position: fixed;
+  width: 86vw;
+  height: 50vh;
+  background: #fff;
+  border-radius: 20px;
+  top: 16%;
+  left: 7vw;
+  z-index: 10003;
+  padding: 5%;
+  box-sizing: border-box;
+}
+
+.actionNext>view {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  line-height: 10vh;
+  justify-content: flex-start;
+}
+
+.actionNext input {
+  float: left;
+  width: 40vw;
+  height: 10vh;
+  line-height: 10vh;
+}
+
+.nextBtn {
+  background: #ff666a;
+  color: #fff;
+  display: block !important;
+  width: 50%;
+  padding: 5px 20px;
+  border-radius: 5px;
+  margin: 5vh auto 0;
+  text-align: center;
+  line-height: 2 !important;
+}
+
+.nextTitle {
+  min-width: 30vw;
+}
+
+.nextClose {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  right: 5%;
+}

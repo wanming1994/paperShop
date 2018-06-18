@@ -1,0 +1,63 @@
+<include src="/template/actionsheet/actionsheet.wxml" />
+<include src="/template/password/payPassword.wxml" />
+<!--pages/pay/pay.wxml-->
+<view class="actionContent">
+  <view class="actionTitle border_bottom lineItem">
+    <view class="left">
+      <image src="{{productData.info.primary_pic_url}}"></image>
+    </view>
+    <view class="center f14">
+      <view class='f16'>{{productData.info.name}}</view>
+      <view class="f16 clr_orange bold">￥{{productData.info.retail_price}}</view>
+      <view>库存{{productData.info.goods_number}}</view>
+    </view>
+    <view class="right" bindtap="toggleMask">
+    </view>
+  </view>
+  <view class="actionNumber border_bottom lineItem" style="align-items:center;">
+    <view class="f16 ">购买数量:</view>
+    <view class="amount">
+      <button data-type="reduce" bindtap="revisenum">-</button>
+      <input class="f12 " type="number " data-type="input" bindchange="revisenum" value="{{goodsAmount}}" />
+      <button data-type="add" bindtap="revisenum">+</button>
+    </view>
+  </view>
+</view>
+
+<view class="section section_gap">
+  <view class="section__title f14 fl">是否使用积分(剩余<text class='f12 baseColor'>{{scoreMax}}分</text>)</view>
+  <switch class='fr' name="switch" checked="{{usePoint}}" bindtap='clickUsePoint' />
+</view>
+
+<view class='border_bottom f14 word' wx:if="{{usePoint}}">
+  <view class='left'>使用积分(可用<text class='f12 baseColor'>{{canusePoint}}分</text>)</view>
+  <view class='center tr'>
+    <input  placeholder="请输入使用积分数量" type='number' bindinput='userScoreInput' value='{{userScoreInput}}'/>
+  </view>
+</view>
+
+<view class='padding2 tr f12' wx:if="{{usePoint}}">积分可抵扣<text class='baseColor'>{{canTransMoney}}元</text></view>
+<form bindsubmit="formSubmit" report-submit bindreset="formReset">
+  <view class='lineItem lineH_three f16 bottom'>
+    <view class='center tc clr_orange'>实付款：￥{{trueAmount}}</view>
+    <button class='right' form-type="submit" style='border-radius:0'>确认下单</button>
+  </view>
+</form>
+
+<view class="actionNext f22" hidden="{{!showPayDetail}}">
+  <image class="nextClose" bindtap="toggleMaskPay" src="/resources/images/icon/close.png"></image>
+  <view>
+    <view class="nextTitle">小计:</view>
+    <view>{{orderInfo.order_price}}元</view>
+  </view>
+  <view>
+    <view class="nextTitle">积分抵现:</view>
+    <view>{{orderInfo.full_cut_price}}元</view>
+  </view>
+  <view class='baseColor'>
+    <view class="nextTitle">实付金额:</view>
+    <view>{{orderInfo.actual_price}}元</view>
+  </view>
+  <view bindtap="toBuyConfirm" class="nextBtn f16">去付款</view>
+</view>
+<view class="actionMask" catchtouchmove="catchActionMask" hidden="{{!showPayDetail}}"></view>

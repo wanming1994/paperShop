@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="head lineItem f50">
+    <view>1069</view>
+    <view>
+      <image src="/resources/images/usernone.png"></image>
+    </view>
+    <view>
+      <view>43
+        <text class="f16 clr_lightGray">名</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="content">
+    <block wx:for="{{5}}" wx:key="*this">
+      <view class="lineItem" style="{{index%2==0?'background:#f5f5f5;':''}}">
+        <view class="left rank">
+          <block wx:if="{{index<3}}">
+            <image src="/resources/images/icon/rank{{index+1}}.png"></image>
+          </block>
+          <block wx:else>
+            {{index+1}}
+          </block>
+        </view>
+        <view class="center">
+          <view class="logo">
+            <image src="/resources/images/usernone.png"></image>
+          </view>
+          <view class="detail">
+            <view class="flex">
+              <view>Traxad</view>
+              <view>1</view>
+            </view>
+            <view class="flex">
+              <view>1231</view>
+              <view class="star">
+                <image src="/resources/images/influence/priased.png"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

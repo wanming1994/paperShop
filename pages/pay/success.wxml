@@ -1,0 +1,33 @@
+<!--pages/pay/success.wxml-->
+<view class="container">
+  <view class="successIcon tc">
+    <text class="iconfont icon-zhifuwancheng baseColor f70"></text>
+  </view>
+  <view class="tc">
+    <text class="f16 baseColor">支付成功</text>
+  </view>
+  <view class="tc">
+    <text class="bold f40">￥{{data.actualPrice}}</text>
+  </view>
+
+  <view class="successCont">
+    <view class="lineItem">
+      <view class="left clr_lightGray f14">支付类型</view>
+      <view class="right tr f16">微信支付</view>
+    </view>
+    <view class="lineItem">
+      <view class="left clr_lightGray f14">订单金额</view>
+      <view class="right tr f16">{{data.orderPrice}}元</view>
+    </view>
+    <view class="lineItem" wx:if="{{data.fullCutPrice}}">
+      <view class="left  clr_lightGray f14">积分抵扣</view>
+      <view class="right tr f16">{{data.fullCutPrice}}元</view>
+    </view>
+    <view class="lineItem">
+      <view class="left  clr_lightGray f14">支付时间</view>
+      <view class="right tr f16">{{data.createTime}}</view>
+    </view>
+
+
+  </view>
+</view>

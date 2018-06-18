@@ -1,0 +1,117 @@
+<view class="page">
+  <!-- <loading wx:if="{{loading}}">加载中</loading> -->
+  <view class="swiper-tab top">
+    <view class="f14 swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-type="p501" data-current="0" bindtap="swichNav">全部</view>
+    <view class="f14 swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-type="p0" data-current="1" bindtap="swichNav">待支付</view>
+    <view class="f14 swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-type="p201" data-current="2" bindtap="swichNav">待发货</view>
+    <view class="f14 swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-type="p300" data-current="3" bindtap="swichNav">待收货</view>
+    <view class="f14 swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-type="p402" data-current="4" bindtap="swichNav">已完成</view>
+  </view>
+  <swiper current="{{currentTab}}" bindtouchstart='touchstart' bindtouchend='touchend' bindtouchmove='touchmove' class="swiper-box" duration="0" style="height:{{winHeight - 50}}px;" bindchange="bindChange">
+    <swiper-item>
+      <scroll-view class="scrollWrap" scroll-y bindscroll="scroll" bindscrolltolower="lower" bindscrolltoupper="upper">
+        <block wx:for="{{p501}}" wx:key="id">
+          <template is="orderList" data="{{item:item}}"></template>
+        </block>
+        <view class="tips f12">{{p501Tips}}</view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view class="scrollWrap" scroll-y bindscroll="scroll" bindscrolltolower="lower" bindscrolltoupper="upper">
+        <block wx:for="{{p0}}" wx:key="id">
+          <template is="orderList" data="{{item:item}}"></template>
+        </block>
+        <view class="tips f12">{{p0Tips}}</view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view class="scrollWrap" scroll-y bindscroll="scroll" bindscrolltolower="lower" bindscrolltoupper="upper">
+        <block wx:for="{{p201}}" wx:key="id">
+          <template is="orderList" data="{{item:item}}"></template>
+        </block>
+        <view class="tips f12">{{p201Tips}}</view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view class="scrollWrap" scroll-y bindscroll="scroll" bindscrolltolower="lower" bindscrolltoupper="upper">
+        <block wx:for="{{p300}}" wx:key="id">
+          <template is="orderList" data="{{item:item}}"></template>
+        </block>
+        <view class="tips f12">{{p402Tips}}</view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view class="scrollWrap" scroll-y bindscroll="scroll" bindscrolltolower="lower" bindscrolltoupper="pullDownRefresh">
+        <block wx:for="{{p402}}" wx:key="id">
+          <template is="orderList" data="{{item:item}}"></template>
+        </block>
+        <view class="tips f12">{{p300Tips}}</view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+  <include src="/template/actionsheet/actionsheet.wxml" />
+  <include src="/template/password/payPassword.wxml" />
+</view>
+
+<template name="orderList">
+  <view class="ordersWrap">
+    <navigator url="../../home/index">
+      <view class="flexC title borderA">
+        <!-- <image src="{{item.tenantThumbnail?item.tenantThumbnail:'/resources/user.png'}}"></image> -->
+        <view class="name f16">{{item.add_time}}</view>
+        <view class="orderType f14 clr_orange" wx:if='{{item.order_type==0}}'>{{'商品订单('+item.order_status_text+')'}}</view>
+        <view class="orderType f14 clr_orange" wx:if='{{item.order_type==1}}'>{{'兑换订单('+item.order_status_text+')'}}</view>
+        <view class="orderType f14 clr_orange" wx:if='{{item.order_type==2}}'>{{'提货订单('+item.order_status_text+')'}}</view>
+        <view class="orderType f14 clr_orange" wx:if='{{item.order_type==3}}'>{{'加入会员('+item.order_status_text+')'}}</view>
+      </view>
+    </navigator>
+    <navigator url="./orderDetails/orderDetails?id={{item.id}}">
+      <block wx:for="{{item.orderItems}}" wx:key="id" wx:for-item="orderItem">
+        {{orderItems.id}}
+        <view class="flexC details borderA">
+          <view class="orderImg">
+            <image src="{{orderItem.list_pic_url?orderItem.list_pic_url:'/resources/images/noneimg.png'}}"></image>
+          </view>
+          <view class="shopInfo">
+            <view class="shopName f14 overone">{{orderItem.goods_name}}</view>
+            <view class="orderNumber f14 overone clr_lightGray">尺码:{{orderItem.goods_specifition_name_value}}</view>
+            <view class="orderNumber f14 overone">订单号:{{item.order_sn}}</view>
+            <view class="shopPrice f14 clr_orange">￥ {{orderItem.retail_price}}</view>
+          </view>
+          <view class="shopNumber">
+            <view>x{{orderItem.number}}</view>
+          </view>
+        </view>
+      </block>
+    </navigator>
+    <view class="orderTotal borderA f14">
+      <!-- <view>共
+        <text class="clr_orange">{{item.goodsCount}}</text>件商品</view> -->
+      <view>实付款
+        <text class="clr_orange">￥{{item.actual_price}}</text>
+      </view>
+      <view>(含运费
+        <text class="clr_orange">￥{{item.freight_price?item.freight_price:0}}</text>)</view>
+    </view>
+    <view class="method f14">
+      <block wx:if="{{item.order_status == '0'}}">
+        <!-- <view data-type="refund" data-info="{{item.id}}" catchtap="methodBtn">取消订单</view> -->
+        <form bindsubmit="formSubmit" report-submit bindreset="formReset">
+          <button data-type="delete" catchtap="methodBtn" class="confirmBtn" data-info="{{item.id}}" style="border:1px solid #000;line-height:1.6;font-size:32rpx;margin:10px 10px;float:right;background:#fff;color:#000;">删除订单</button>
+          <button data-type="waitpay" class="confirmBtn" form-type="submit" data-info="{{item.id}}" style="border:1px solid #d9d9d9;line-height:1.6;font-size:32rpx;margin:10px 10px;float:right;">立即支付</button>
+        </form>
+      </block>
+      <block wx:elif="{{item.order_status == '201'}}">
+        <!-- <view data-type="refund" data-info="{{item.id}}" catchtap="methodBtn">取消订单</view> -->
+      </block>
+      <block wx:elif="{{item.order_status == '300'}}">
+        <view wx:if="{{item.shipping_no}}" data-type="logistics" data-info="{{item.shipping_no}}" catchtap="methodBtn">查看物流</view>
+        <view data-type="confirm" data-info="{{item.id}}" class="confirmBtn" catchtap="methodBtn">立即签收</view>
+      </block>
+      <block wx:elif="{{item.order_status == '402'}}">
+      </block>
+
+
+    </view>
+  </view>
+</template>

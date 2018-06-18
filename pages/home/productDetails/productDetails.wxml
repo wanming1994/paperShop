@@ -1,0 +1,154 @@
+<!--swiper  -->
+<import src="/template/swiper/swiper.wxml" />
+<!--商品列表  -->
+<import src="/template/productList/productListTemp.wxml" />
+<!-- 商品详情 -->
+<import src="../../wxParse/wxParse.wxml" />
+
+<button loading="{{!pageLoad}}" hidden="{{pageLoad}}" class="f14 loadBtn clr_lightGray">加载中</button>
+
+<view hidden="{{!pageLoad}}" style='padding-bottom:104rpx;'>
+  <swiper circular indicator-active-color="rgba(255,255,255,0.6)" indicator-dots="{{showDot?showDot:false}}" autoplay="{{autoplay?autoplay:true}}" interval="{{interval?interval:2000}}" style="height:{{name?_swiper[name].height+'px':_swiper['swiper'].height+'px'}};"
+    class="adSwiper">
+    <block wx:for="{{productData.gallery}}" wx:key="{{key?key:*this}}" wx:if="{{productData.gallery.length}}">
+      <swiper-item>
+        <image data-name="{{name?name:'swiper'}}" bindload="_adswiperimageload" mode="widthFix" src="{{item.img_url}}"></image>
+      </swiper-item>
+    </block>
+    <block wx:if="{{!productData.gallery.length}}">
+      <swiper-item>
+        <image data-name="{{name?name:'swiper'}}" bindload="_adswiperimageload" mode="widthFix" src="{{productData.info.primary_pic_url}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="title box-b clr_titleWhite f18 ">
+    <view class='padding2'>{{productData.info.name}}</view>
+    <view class="lineItem padding0" style='border-top:1px solid #cfcfcf;border-bottom:1px solid #cfcfcf;'>
+      <view class="left lineH_two" style='align-items:center;width:100%;position:relative;'>
+        <text class="clr_orange f20 bold fl" style='margin-left:2vw;'>￥{{productData.info.retail_price}}</text>
+        <image src='/resources/images/product/huiyuan1.png' style='width:32rpx;height:32rpx;margin-left:40rpx;'></image>
+        <text class='f14'>￥{{productData.info.member_price}}</text>
+        <text class="clr_lightGray fr f14" style='position:absolute;right:2vw;display:block;top:1vw;'>推荐官专属价</text>
+      </view>
+      <view class="center"></view>
+      <view class="right f14 clr_lightGray"></view>
+    </view>
+  </view>
+
+
+  <view class='product_introduction' wx:if="{{introduction}}">
+    <view class='title f14 tc padding2'>宝贝详情</view>
+    <view class="wxParse content">
+      <template is="wxParse" data="{{wxParseData:introduction.nodes}}" />
+      <!-- <template is="wxParse" data="{{wxParseData:introduction.nodes}}" /> -->
+    </view>
+  </view>
+</view>
+
+<view class="tab">
+  <view class="clr_lightGray f14 left">
+    <button open-type="contact" hover-class="none" class="f14" session-from="weapp" send-message-title="亲！我正在看这个商品" send-message-path="/pages/home/productDetails/productDetails?id={{productData.id}}" show-message-card="true" style='border-radius:0;border-right:1px solid #cfcfcf;'>
+      <image src="/resources/images/icon/kefu.png"></image>
+      <view class="">客服</view>
+    </button>
+    <view bindtap="toCart" style='position:relative;'>
+      <image src="/resources/images/icon/cart.png"></image>
+      <view class="">购物车</view>
+      <text class="tips baseBg" wx:if="{{cartCount}}">{{cartCount}}</text>
+    </view>
+  </view>
+  <view class="clr-white f14 right">
+    <view style="background:#feae31;" data-type="cart" bindtap="toggleMask">
+      加入购物车
+    </view>
+    <!-- <view style="background:#ff666a;" data-type="buy" bindtap="toggleMask">
+      立即购买
+    </view> -->
+  </view>
+</view>
+
+<view class="actionMask" catchtouchmove="catchActionMask" hidden="{{!showBuyDetail}}" bindtap="closeMask"></view>
+<view class="actionMask" catchtouchmove="catchActionMask" hidden="{{!showAction}}" bindtap="toggleMask"></view>
+<view class="actionContent" hidden="{{!showAction}}">
+  <view class="actionTitle border_bottom lineItem">
+    <view class="left">
+      <block wx:for="{{productList}}" wx:for-item="sitem" wx:key="id">
+        <image wx:if="{{selectData.id==sitem.id}}" src="{{sitem.pic_url||'../../../resources/images/member/nbs.jpg'}}"></image>
+      </block>
+    </view>
+    <view class="center f14">
+      <view class="f16 clr_orange bold">￥{{selectData.retail_price}}</view>
+      <!-- <view class="f16 clr_orange bold">{{productData.info.name}}</view> -->
+      <view>库存{{selectData.number}}件</view>
+      <!-- <view>已选
+        <text class="clr_orange">{{slectData.number||0}}包</text>
+      </view> -->
+    </view>
+    <view class="right" bindtap="toggleMask">
+      <image src="/resources/images/icon/close.png"></image>
+    </view>
+  </view>
+  <view class="actionSpecifications border_bottom">
+    <view class="actionItemTitle f16">{{productData.specificationList[0].name}}：</view>
+    <view class="actionItemBtn f16">
+      <block wx:for="{{productList}}" wx:for-item="citem" wx:key="id" wx:for-index="iindex">
+        <text bindtap="checkout" data-id="{{citem.id}}" data-goodsid="{{citem.goods_id}}" data-number="{{citem.goods_number}}" data-value="{{citem.goods_specification_value}}" data-retail_price="{{citem.retail_price}}" class="{{citem.id==selectData.id?'active':''}}">{{citem.goods_specification_value}}</text>
+      </block>
+    </view>
+  </view>
+  <view class="actionNumber border_bottom lineItem" style="align-items:center;">
+    <view class="f16 ">购买数量:</view>
+    <view class="amount">
+      <button data-btype="reduce" data-id="{{selectData.id}}" bindtap="revisenum">-</button>
+      <input class="f12" data-id="{{selectData.id}}" type="number" data-btype="input" bindchange="revisenum" value="{{selectData.count||0}}" />
+      <button data-btype="add" data-id="{{selectData.id}}" bindtap="revisenum">+</button>
+    </view>
+  </view>
+  <button class="defaultBtn " bindtap="paySubmitSel">确认</button>
+</view>
+
+<view class="actionNext f22" hidden="{{!showBuyDetail}}">
+  <image class="nextClose" bindtap="closeMask" src="/resources/images/icon/close.png"></image>
+  <view>
+    <view class="nextTitle">小计:</view>
+    <view>{{actual_price}}元</view>
+  </view>
+  <view>
+    <view class="nextTitle">使用积分:</view>
+    <view>
+      <input bindinput="userScoreInput" value="{{userScoreInput}}"></input>
+    </view>分
+  </view>
+  <view>
+    <view class="nextTitle">实付金额:</view>
+    <view>￥{{trueAmount}}元</view>
+    <view>
+      <text class='f12 clr_red'>（积分抵{{scoreMoney}}元）</text>
+    </view>
+  </view>
+  <view bindtap="toBuyConfirm" class="nextBtn f16">去付款</view>
+</view>
+
+
+<view class="actionMask" wx:if="{{showShortcut}}" bindtap="toggleshowShortcut"></view>
+<view class='shortcut f12' bindtap='openShortcut' wx:if="{{!showShortcut}}">
+  <view>分享</view>
+  <view>商品</view>
+</view>
+<view class='shortcut shortcutClose' bindtap='openShortcut' wx:if="{{showShortcut}}">
+  <image src='/resources/images/product/close.png'></image>
+</view>
+<view class='shortcutInfo f12'>
+  <view class="shortcutContent {{showShortcut&&'showShortcutContent'}}">
+    <view class='tr shortcutInfoList' bindtap='goHome'>
+      <text>分享好友</text>
+      <button open-type='share'>
+        <image src='/resources/images/product/friends.png'></image>
+      </button>
+    </view>
+    <view class='tr shortcutInfoList' bindtap='goShare'>
+      海报分享
+      <image src='/resources/images/product/circle.png'></image>
+    </view>
+  </view>
+</view>

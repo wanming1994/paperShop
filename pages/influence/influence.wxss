@@ -1,0 +1,85 @@
+page {
+  background: #fff;
+}
+
+.head {
+  padding: 4% 0;
+}
+
+.head>view {
+  margin: 0 auto;
+  align-items: center;
+  font-size: 80rpx;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.head image {
+  display: block;
+  border-radius: 50%;
+  border: 1px splid #eee;
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.rank {
+  width: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rank image {
+  width: 60rpx;
+  height: 80rpx;
+}
+
+.logo {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 100rpx;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #eee;
+  background: #fff;
+  margin-right: 30rpx;
+}
+
+.logo image {
+  display: block;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.content .center {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.content .center .detail {
+  flex: 1;
+  padding-right: 40rpx;
+}
+
+.detail .flex {
+  justify-content: space-between;
+}
+.detail .flex view+view{
+  min-width: 80rpx;
+  text-align: center;
+}
+
+.star {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.star image {
+  width: 40rpx;
+   height: 32rpx; 
+}

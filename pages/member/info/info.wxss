@@ -1,0 +1,36 @@
+/* pages/member/info/info.wxss */
+
+.container{
+  overflow:hidden;
+}
+.lineItem {
+  padding: 3%;
+  border-bottom: 1px solid #eee;
+}
+.infoTop{
+  margin: 2%;
+}
+.headImg{
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.headImg .left{
+  line-height: 5
+  
+}
+.headImg .right image{
+  width: 18vw;
+  height: 18vw;
+  border-radius: 50%;
+}
+.recommender{
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.address_title{
+  padding: 2% 4%
+}
+.address{
+  margin: 2%;
+  border-radius: 8px;
+}

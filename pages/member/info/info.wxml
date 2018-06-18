@@ -1,0 +1,29 @@
+<view class="container">
+  <view class='infoTop'>
+    <view class='lineItem headImg'>
+      <view class='left f16'>我的头像</view>
+      <view class='center f16'></view>
+      <view class='right f16'>
+        <image src='{{info.avatarUrl?info.avatarUrl:"../../../resources/images/usernone.png"}}'></image>
+      </view>
+    </view>
+    <view class='lineItem nickName'>
+      <view class='left f16'>我的昵称</view>
+      <view class='center f16'></view>
+      <view class='right f16'>{{info.nickName}}</view>
+    </view>
+    <view class='lineItem recommender'>
+      <view class='left f16'>我的推荐人</view>
+      <view class='center f16'></view>
+      <view class='right f16'>{{info.recommendUserNickName}}</view>
+    </view>
+  </view>
+
+  <view class='address_title clr_mediumGray f16'>默认收获地址</view>
+  <view class='lineItem address' bindtap='chooseAddress'>
+      <view class='left f16'>请选择收货地址</view>
+      <view class='center f16'></view>
+      <view class='right f16'>
+      </view>
+    </view>
+</view>

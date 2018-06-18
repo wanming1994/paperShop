@@ -1,0 +1,9 @@
+<view class='tc shareWrap'>
+  <text class='f16 title'>大王邀请您加入颠覆之旅</text>
+  <view class='imgWrap'>
+    <image src='../../../resources/images/member/share.jpg' mode="widthFix"></image>
+  </view>
+</view>
+<button class='radiusBtn bold' open-type='share'>点击分享</button>
+<button class='radiusBtn bold'  open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo">生成专属海报</button>
+<!-- <view class='clr_mediumGray tc f14 desc'>推荐10个人即可领取免费试用装</view> -->

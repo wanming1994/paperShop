@@ -1,0 +1,63 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/member/poster/poster",
+    "pages/cart/cart",
+    "pages/category/category",
+    "pages/catalog/catalog",
+    "pages/home/join/join",
+    "pages/home/video/video",
+    "pages/influence/influence",
+    "pages/home/productList/productList",
+    "pages/home/productDetails/productDetails",
+    "pages/home/productDetails/poster/poster",
+    "pages/pay/success",
+    "pages/pay/pay",
+    "pages/pay/orderPay",
+    "pages/member/member",
+    "pages/member/point/index",
+    "pages/member/getGoods/getGoods",
+    "pages/member/bind/bind",
+    "pages/member/coupon/list",
+    "pages/member/exchange/exchange",
+    "pages/member/exchange/history",
+    "pages/member/influence/influence",
+    "pages/member/share/share",
+    "pages/member/info/info",
+    "pages/member/order/order",
+    "pages/member/order/logistics/logistics",
+    "pages/member/order/orderDetails/orderDetails",
+    "pages/include/captcha/captcha"
+  ],
+  "tabBar": {
+    "color": "#7f91a7",
+    "backgroundColor": "#fff",
+    "selectedColor": "#ffcbc0",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "/resources/images/tabBar/1.2.jpg",
+        "selectedIconPath": "/resources/images/tabBar/1.1.jpg"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "/resources/images/tabBar/2.2.jpg",
+        "selectedIconPath": "/resources/images/tabBar/2.1.jpg"
+      },
+      {
+        "pagePath": "pages/member/member",
+        "text": "我的",
+        "iconPath": "/resources/images/tabBar/3.2.jpg",
+        "selectedIconPath": "/resources/images/tabBar/3.1.jpg"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "#ffa73d",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": ".",
+    "navigationBarTextStyle": "black"
+  }
+}

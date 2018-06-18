@@ -1,0 +1,18 @@
+<view class="f26 tc title border_bottom">
+  快递单号：{{no}}
+</view>
+<view class="flex th f16 border_bottom">
+  <view class="thLeft">时间</view>
+  <view class="flex-item thRight">地点和跟踪进度</view>
+</view>
+<block wx:for="{{list}}" wx:key="originalTime">
+  <view class="border_bottom flex td">
+      <view class="tdLeft">
+        <view class="f14">{{item.day}}</view>
+        <view class="f18">{{item.time}}</view>
+      </view>
+      <view class="tdRight f16 flex-item">
+        {{item.content}}
+      </view>
+  </view>
+</block>

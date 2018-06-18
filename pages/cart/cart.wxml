@@ -1,0 +1,69 @@
+<button loading hidden="{{cartList.length > 0||getDataComplete}}" class="f14 loadBtn clr_lightGray">加载中</button>
+<!--要是够车内没有数据，就行显示没有数据-->
+<view class="cart" hidden="{{cartList.length > 0||!getDataComplete}}" style="margin-top:160rpx;">
+  <!-- <image src="/resources/images/cart/cart_none.png" /> -->
+  <view class='tc'>购物车什么都没有，赶快去购物吧</view>
+  <button type="primary" size="mini" bindtap="goIndex" hover-class="none"> 去逛逛 </button>
+</view>
+<!--要是有数据，就显示数据-->
+<view class="cartList" hidden="{{cartList.length == 0}}">
+  <!-- <view class="" hidden="{{!mailPromotion}}">
+    <view class="padding2 f16 border_bottom">
+      <text class="f14 clr_orange tip">满邮</text>{{mailPromotion.name}}</view>
+  </view> -->
+  <checkbox-group bindchange="checkItemChange">
+    <block wx:for="{{cartList}}" wx:key="id">
+      <view class="cartItem border_bottom">
+        <label class="checkbox">
+          <checkbox value="{{item.id}}" checked="{{item.checked}}" />
+        </label>
+        <view class="image" bindtap='goProductDetail' data-id="{{item.goods_id}}">
+          <image class="thumbnail" src="{{item.list_pic_url}}"></image>
+        </view>
+        <view class="detail">
+          <view class="overone f16">{{item.goods_name}}</view>
+          <view class="lineItem padding0">
+            <view class="center">
+              <view class='clr_lightGray f14'>尺码:{{item.goods_specifition_name_value}}</view>
+              <view>
+                <text class="clr_orange f18">￥{{item.retail_price}}</text>
+                <!-- <text class="sumdel f12 clr_lightGray">￥{{item.market_price}}</text> -->
+              </view>
+            </view>
+            <view class="right">
+              <view class="amount">
+                <button bindtap="revisenum" data-id="{{item.id}}" data-type="reduce" data-min="1" data-num="{{item.number}}">-</button>
+                <input bindchange="inputnum" data-id="{{item.id}}" class="f12" type="number" value="{{item.number}}" />
+                <button data-id="{{item.id}}" data-type="add" data-min="1" data-num="{{item.number}}" bindtap="revisenum">+</button>
+              </view>
+            </view>
+          </view>
+          <!-- <view class="specification f12" style="line-height:1.4;">
+            <text class='clr_lightGray f14'>尺码:{{item.goods_specifition_name_value}}</text>
+          </view>
+          <view class="price">
+            <text class="clr_orange f18">￥{{item.retail_price}}</text>
+            <text class="sumdel f12 clr_lightGray">￥{{item.market_price}}</text>
+          </view> -->
+          <view class="op" style="display:flex;">
+            <image bindtap="deleteItem" data-name="{{item.fullName}}" data-id="{{item.id}}" class="delete" src="/resources/images/icon/delete.png"></image>
+          </view>
+        </view>
+      </view>
+    </block>
+  </checkbox-group>
+</view>
+<checkbox-group bindchange="checkAllChange">
+  <view class="tab" hidden="{{cartList.length == 0}}">
+    <label class="checkAll f14">
+      <checkbox value="true" checked="{{checkAll}}" />
+      <text>全选</text>
+    </label>
+    <view class="total f14">
+      <text>合计:￥{{checkedGoodsAmount}}</text>
+    </view>
+    <view class="submit f14" bindtap='submit'>
+      结算
+    </view>
+  </view>
+</checkbox-group>

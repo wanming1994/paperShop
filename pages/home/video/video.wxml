@@ -1,0 +1,7 @@
+<video id="video1" class='myVideo' data-id="1" bindplay="StartPlay"  autoplay="false"  objectFit="cover" src="https://www.sincereglobe.com/VIDEO/tianshi.mp4"
+  poster="https://www.sincereglobe.com/VIDEO/tianshi.png">
+</video>
+
+<video id="video2" class='myVideo' data-id="2" bindplay="StartPlay" autoplay="false"  objectFit="cover" src="https://www.sincereglobe.com/VIDEO/2015weiyi.mp4"
+  poster="https://www.sincereglobe.com/VIDEO/weiyi.png">
+</video>

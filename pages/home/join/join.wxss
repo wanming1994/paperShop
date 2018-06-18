@@ -1,0 +1,43 @@
+/* pages/home/join/join.wxss */
+
+.container {
+  position: relative;
+}
+
+.imgBtn {
+  width: 100%;
+}
+
+.bgimg {
+  width: 100%;
+  height: 99vh;
+}
+
+.myRec {
+  position: absolute;
+  width: 100%;
+  bottom: 27.5vh;
+}
+
+.goHome {
+  width: 100rpx;
+  position: absolute;
+  border-radius: 50%;
+  right: 5vw;
+  bottom: 5vw;
+}
+
+.wrapBtn {
+  position: absolute;
+  top: 52vh;
+  width: 80%;
+  left: 10%;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.wrapBtn::after{
+  display: none;
+}
+

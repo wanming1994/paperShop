@@ -1,0 +1,38 @@
+<view class='container'>
+  <!-- <view class="tc f16" style="line-height:80rpx;" bindtap="toHistory">兑换历史</view> -->
+  <block wx:for="{{exchangeList}}" wx:key="id" wx:for-item="item">
+    <view class='imageTwo productList' bindtap='goProductDeatil'>
+      <image src='{{item.primary_pic_url}}' mode="widthFix"></image>
+      <view class='word tc' bindtap='goExchange' data-index="{{index}}" data-id="{{item.id}}" data-price="{{item.retail_price}}">
+        <text class='f14'>立即兑换<text class="clr_red" style='display:inline'>(需要{{item.retail_price}}积分)</text></text>
+      </view>
+    </view>
+    <view class='break'></view>
+  </block>
+  <view class="tips" hidden="{{showtips}}">{{tips}}</view>
+</view>
+
+<view class="actionMask" catchtouchmove="catchActionMask" hidden="{{!showAction}}" bindtap="toggleMask"></view>
+<view class="actionContent" hidden="{{!showAction}}">
+  <view class="actionTitle border_bottom lineItem">
+    <view class="left">
+      <image src="{{selectProduct.primary_pic_url}}"></image>
+    </view>
+    <view class="center f14">
+      <view class="f16 clr_orange bold">{{calcAmount}}积分</view>
+      <!-- <view>库存{{selectData.number}}件</view> -->
+    </view>
+    <view class="right" bindtap="toggleMask">
+      <image src="/resources/images/icon/close.png"></image>
+    </view>
+  </view>
+  <view class="actionNumber border_bottom lineItem" style="align-items:center;">
+    <view class="f16 ">兑换数量:</view>
+    <view class="amount">
+      <button data-btype="reduce" bindtap="revisenum">-</button>
+      <input class="f12" type="number" data-btype="input" bindchange="revisenum" value="{{selectDataCount}}" />
+      <button data-btype="add" bindtap="revisenum">+</button>
+    </view>
+  </view>
+  <button class="defaultBtn " bindtap="paySubmitSel">确认</button>
+</view>

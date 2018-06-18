@@ -1,0 +1,113 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.98",
+	"appid": "wx833eb63309af7724",
+	"projectname": "%E5%A4%A9%E7%84%B6%E5%A3%B9%E5%AE%B6",
+	"svr": "",
+	"client": "",
+	"qcloudRoot": "",
+	"miniprogramRoot": "",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "个人中心",
+					"pathName": "pages/member/member",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "兑换历史",
+					"pathName": "pages/home/join/join",
+					"query": "extension=529"
+				},
+				{
+					"id": 2,
+					"name": "手机",
+					"pathName": "pages/member/bind/bind",
+					"query": "where=member"
+				},
+				{
+					"id": 4,
+					"name": "购物车",
+					"pathName": "pages/home/home",
+					"query": "&extension=90"
+				},
+				{
+					"id": -1,
+					"name": "个人中心影响力",
+					"pathName": "pages/member/influence/influence",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "积分首页",
+					"pathName": "pages/member/point/index",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "pages/canvas/canvas",
+					"pathName": "pages/member/poster/poster",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "roductDetails",
+					"pathName": "pages/home/productDetails/productDetails",
+					"query": "id=1181009"
+				},
+				{
+					"id": -1,
+					"name": "pages/member/poster/poster",
+					"pathName": "pages/member/poster/poster",
+					"query": ""
+				},
+				{
+					"id": 9,
+					"name": "pages/home/join/join",
+					"pathName": "pages/home/join/join",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pages/home/productDetails/productDetails",
+					"pathName": "pages/home/productDetails/productDetails",
+					"query": "id=1181005"
+				},
+				{
+					"id": 11,
+					"name": "pages/home/productDetails/poster/poster",
+					"pathName": "pages/home/productDetails/poster/poster",
+					"query": "id=1181006"
+				}
+			]
+		}
+	}
+}

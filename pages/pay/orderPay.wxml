@@ -1,0 +1,146 @@
+<include src="/template/actionsheet/actionsheet.wxml" />
+<include src="/template/password/payPassword.wxml" />
+<!--pages/pay/pay.wxml-->
+
+
+
+<view class='lineItem lineItem_access f14 address' hidden="{{express}}" bindtap='chooseAddress'>
+  <view class='left' wx:if="{{receiver}}">
+    <text class='iconfont icon-dizhi f66 address_icon'></text>
+  </view>
+  <view class='left' wx:if="{{!receiver}}">
+    <text class='iconfont icon-dizhi f66 address_icon' style='margin-top:12rpx'></text>
+  </view>
+  <view class='center lineH_two' wx:if="{{receiver}}">
+    <view>{{receiver.userName}} {{receiver.telNumber}}</view>
+    <view class='clr_orange'>{{receiver.provinceName}}{{receiver.cityName}}{{receiver.countyName}}{{receiver.detailInfo}}</view>
+  </view>
+  <view class='center lineH_two' wx:if="{{!receiver}}">
+    <view class='clr_red'>请选择收货地址</view>
+  </view>
+  <view class='right'></view>
+</view>
+
+<view class='lineItem product' wx:for="{{order}}" wx:key="id" wx:for-item="item">
+  <view class='left product_img'>
+    <image src='{{item.list_pic_url}}'></image>
+  </view>
+  <view class='center product_txt'>
+    <view class='f14'>{{item.goods_name}}</view>
+    <view class='f12'>尺码：{{item.goods_specifition_name_value}}</view>
+    <view class='lineItem f16 clr_orange price'>
+      <view class='center'>￥{{item.retail_price}}</view>
+      <view class='right'>X{{item.number}}</view>
+    </view>
+  </view>
+</view>
+
+<view class='f16  payStyleTitle' wx:if="{{selectDiscount.length>0}}">选择优惠方式：</view>
+<radio-group class="radio-group tc" bindchange="radioChange" wx:if="{{selectDiscount.length>0}}">
+  <label class="radio f16" wx:for="{{selectDiscount}}" wx:key="id">
+    <radio value="{{item.type}}" checked="{{item.type=='coupon'}}" color='#ffa73d' />{{item.name}}
+  </label>
+</radio-group>
+
+
+
+<view class="section section_gap" wx:if="{{scoreMax>0 && defaultDiscount=='score'}}">
+  <view class="section__title f14 fl">是否使用积分(剩余
+    <text class='f12 baseColor'>{{scoreMax}}分</text>)</view>
+  <switch class='fr' name="switch" checked="{{usePoint}}" bindtap='clickUsePoint' />
+</view>
+<view class='border_bottom f14 word' wx:if="{{scoreMax>0 && defaultDiscount=='score'}}">
+  <view class='left'>使用积分(可用
+    <text class='f12 baseColor'>{{canusePoint}}分</text>)</view>
+  <view class='center tr'>
+    <input placeholder="请输入使用积分数量" type='number' bindinput='userScoreInput' value='{{userScoreInput}}' />
+  </view>
+</view>
+<view class='padding2 tr f12' wx:if="{{scoreMax>0 && defaultDiscount=='score'}}">积分可抵扣
+  <text class='baseColor'>{{canTransMoney}}元</text>
+</view>
+
+
+<view class='lineItem f14 lineItem_access' wx:if="{{couponList.length>0 && defaultDiscount=='coupon'}}" bindtap="toogleCouponSelect">
+  <view class='center' style='flex-direction:row;justify-content:flex-start;'>优惠券
+    <text style="background:#ffa73d;color:white;padding:0 20rpx;margin-left:20rpx;">{{couponList.length}}张可用</text>
+  </view>
+  <view class='right {{selectCoupon.code?"clr_orange":""}}'>{{selectCoupon.name}}</view>
+</view>
+
+
+<view class='lineItem border_bottom f14 memo'>
+  <view class='left'>买家留言：</view>
+  <view class='center'>
+    <input style='text-align:right' maxlength="500" placeholder="给商家留言" bindblur='inputMemo' />
+  </view>
+</view>
+<view class='lineItem lineH_two f14'>
+  <view class='center tr'>小计：</view>
+  <view class='right clr_orange f16'>￥{{orderInfo.goodsTotalPrice}}</view>
+</view>
+<view class='lineItem f14' wx:if="{{orderInfo.freightPrice}}">
+  <view class='center'>快递运费</view>
+  <view class='right'>￥{{orderInfo.freightPrice}}</view>
+</view>
+
+
+<view class="actionNext f22" hidden="{{!showPayDetail}}">
+  <image class="nextClose" bindtap="toggleMaskPay" src="/resources/images/icon/close.png"></image>
+  <view>
+    <view class="nextTitle">小计:</view>
+    <view>{{payorderInfo.order_price}}元</view>
+  </view>
+  <view wx:if="{{payorderInfo.full_cut_price>0}}">
+    <view class="nextTitle">积分抵现:</view>
+    <view>{{payorderInfo.full_cut_price}}元</view>
+  </view>
+  <view wx:if="{{payorderInfo.coupon_price}}">
+    <view class="nextTitle">优惠券:</view>
+    <view>{{payorderInfo.coupon_price}}元</view>
+  </view>
+  <view class='baseColor'>
+    <view class="nextTitle">实付金额:</view>
+    <view>{{payorderInfo.actual_price}}元</view>
+  </view>
+  <view style='display:flex'>
+    <view bindtap="toggleMaskPay" class="nextBtn f16" style='flex:1;margin-right:20rpx;background:#fff;color:#000;border:1px solid #333;'>改价</view>
+    <view bindtap="toBuyConfirm" class="nextBtn f16" style='flex:1'>付款</view>
+  </view>
+</view>
+<view class="actionMask" catchtouchmove="catchActionMask" hidden="{{!showPayDetail}}"></view>
+
+
+<form bindsubmit="formSubmit" report-submit bindreset="formReset">
+  <view class='lineItem lineH_three f16 bottom'>
+    <view class='center tc clr_orange'>实付款：￥{{trueAmount}}</view>
+    <button class='right' form-type="submit" style='border-radius:0'>确认下单</button>
+  </view>
+</form>
+
+<view class="couponSelect" hidden="{{!showCouponSelect}}">
+  <view class="couponmask" bindtap="toogleCouponSelect"></view>
+  <view class="couponContent">
+    <view class="couponSelectTitle f16">
+      可用优惠券
+      <!-- <image src="/resources/images/icon/close.png"></image> -->
+    </view>
+    <view class="couponList">
+      <block wx:for="{{couponList}}" wx:key="id">
+        <view class="lineItem f14 border_bottom" data-name="{{item.type_money}}元优惠券" data-id="{{item.id}}" data-amount="{{item.type_money}}" bindtap="selectCoupon">
+          <view class="center">
+            <view class="clr_orange">{{item.type_money}}元优惠券</view>
+            <view>使用期限:{{item.use_end_date}}</view>
+          </view>
+          <view class="right">
+            <view style="background:#ffa73d;color:white;padding:10rpx 20rpx;border-radius:10rpx;">使用</view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="couponOp flex f16">
+      <view style="background:#919191;" bindtap="selectCoupon">取消使用</view>
+      <view style="background:#ffa73d;" bindtap="toogleCouponSelect">关闭</view>
+    </view>
+  </view>
+</view>

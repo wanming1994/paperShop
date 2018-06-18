@@ -1,0 +1,25 @@
+<import src="/template/swiper/swiper.wxml" />
+<view>
+  <scroll-view class="container" scroll-y bindscroll="wrapScroll" style="height:{{winHeight}}px;">
+    <!-- <view class="header" hidden="{{isShow}}"> -->
+      <!-- <template is="adSwiper" data="{{_swiper,name:'top',data:imgUrls,key:topImgs.key,fn:'adTap'}}"></template> -->
+      <!-- <view class='breakTop' style='height:2vw;background:#fff'></view>
+      <view class='imageOne productList'>
+        <image src='../../resources/images/home/pic1.png' mode="widthFix"></image>
+        <view class='word tc' bindtap='joinUs'>
+          <text class='f15 '>加入大王推荐官</text>
+        </view>
+      </view> -->
+      <!-- <view class='breakTop' style='height:2vw;background:#fff'></view> -->
+    <!-- </view> -->
+    <view class="content" style="height:{{winHeight}}px;" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+      <view class="wrap" style="margin-top:-{{showIndex*winHeight}}px;">
+        <block wx:for="{{productHotList}}" wx:key="id" wx:for-item="item">
+          <view bindtap='goProductDeatil' data-id="{{item.id}}" style="height:{{winHeight}}px">
+            <image src='{{item.primary_pic_url}}' style='width:100%;height:100%;'></image>
+          </view>
+        </block>
+      </view>
+    </view>
+  </scroll-view>
+</view>

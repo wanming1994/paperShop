@@ -1,0 +1,37 @@
+<view class="container">
+  <view class="head">
+    <view class="f18">我的影响力</view>
+    <view class="bold f60">{{data.total}}</view>
+  </view>
+
+  <view class="table f14">
+    <view class="border_right">
+      <view class="border_bottom"></view>
+      <view>
+        <image class="iconImg" src="../../../resources/images/icon/member.png"></image> 普通会员</view>
+    </view>
+    <view class="border_right">
+      <view class="border_bottom">我的好友</view>
+      <view>{{data.firstCount}}人</view>
+    </view>
+    <view class="border_right">
+      <view class="border_bottom">好友的好友</view>
+      <view>{{data.secondCount}}人</view>
+    </view>
+    <view class="border_right">
+      <view class="border_bottom">其他好友</view>
+      <view>{{data.thirdCount}}人</view>
+    </view>
+  </view>
+
+  <block wx:for="{{memberList}}" wx:key='*this'  wx:for-item="item">
+  <view class="lineItem member">
+    <view class="left">
+      <image src="{{item.userFollowAvatar?item.userFollowAvatar:'/resources/images/usernone.png'}}" ></image>
+    </view>
+    <view class="center">
+      <view>{{item.userFollowNickname}}</view>
+    </view>
+  </view>
+  </block>
+</view>
