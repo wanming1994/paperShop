@@ -9,7 +9,12 @@ let swiperAutoHeight = require("../../template/swiper/swiper.js"),
   Ad = require("../../service/ad.js"),
   app = getApp(),
   util = require("../../utils/util.js")
+
 Page(Object.assign({}, swiperAutoHeight, {
+
+  /**
+   * 页面的初始数据
+   */
   data: {
     imgUrls: [
       'https://www.sincereglobe.com/IMAGE/BANNER1.jpg',
@@ -18,13 +23,9 @@ Page(Object.assign({}, swiperAutoHeight, {
     indicatorDots: false,
     autoplay: true,
     interval: 4000,
-    duration: 1000,
-    winHeight: wx.getSystemInfoSync().windowHeight,
-    showIndex: 0,
-    isShow: false,
-    startTouches: {},
-    moveTouches: {},
+    duration: 1000
   },
+
   //邀请
   joinUs: function () {
     new member(function (res) {
@@ -82,45 +83,13 @@ Page(Object.assign({}, swiperAutoHeight, {
     }).list()
   },
 
-  wrapScroll(e) {
-    if (e.detail.scrollTop >= 95) {
-      this.setData({
-        isShow: true
-      })
-    }
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
   },
-  touchStart(e) {
-    this.data.startTouches = e.changedTouches[0]
-  },
-  touchMove(e) {
-    this.data.moveTouches = e.changedTouches[0]
-  },
-  touchEnd(e) {
-    // if (!this.data.isShow) return
-    // console.log(e)
-    let startTouch = this.data.startTouches,
-      Y = e.changedTouches[0].pageY - startTouch.pageY,
-      X = Math.abs(e.changedTouches[0].pageX - startTouch.pageX)
-    this.data.endTouches = e.changedTouches[0]
-    if (X > 200) return
-    if (Y > 50) {
-      if (this.data.showIndex === 0) {
-        this.setData({
-          isShow: false
-        })
-        return
-      }
-      this.setData({
-        showIndex: --this.data.showIndex
-      })
-      // console.log('下拉')
-    } else if (Y < -50 && this.data.showIndex < this.data.productHotList.length - 1) {
-      this.setData({
-        showIndex: ++this.data.showIndex
-      })
-      // console.log('上拉')
-    }
-  },
+
   //分享
   onShareAppMessage: function (res) {
     var that = this;

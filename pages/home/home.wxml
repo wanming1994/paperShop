@@ -1,25 +1,63 @@
 <import src="/template/swiper/swiper.wxml" />
-<view>
-  <scroll-view class="container" scroll-y bindscroll="wrapScroll" style="height:{{winHeight}}px;">
-    <!-- <view class="header" hidden="{{isShow}}"> -->
-      <!-- <template is="adSwiper" data="{{_swiper,name:'top',data:imgUrls,key:topImgs.key,fn:'adTap'}}"></template> -->
-      <!-- <view class='breakTop' style='height:2vw;background:#fff'></view>
-      <view class='imageOne productList'>
-        <image src='../../resources/images/home/pic1.png' mode="widthFix"></image>
-        <view class='word tc' bindtap='joinUs'>
-          <text class='f15 '>加入大王推荐官</text>
-        </view>
-      </view> -->
-      <!-- <view class='breakTop' style='height:2vw;background:#fff'></view> -->
-    <!-- </view> -->
-    <view class="content" style="height:{{winHeight}}px;" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
-      <view class="wrap" style="margin-top:-{{showIndex*winHeight}}px;">
-        <block wx:for="{{productHotList}}" wx:key="id" wx:for-item="item">
-          <view bindtap='goProductDeatil' data-id="{{item.id}}" style="height:{{winHeight}}px">
-            <image src='{{item.primary_pic_url}}' style='width:100%;height:100%;'></image>
-          </view>
-        </block>
-      </view>
+<view class="container">
+  <!-- <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" mode="widthFix" style="will-change:transform;width:100vw;"/>
+      </swiper-item>
+    </block>
+  </swiper> -->
+  <template is="adSwiper" data="{{_swiper,name:'top',data:imgUrls,key:topImgs.key,fn:'adTap'}}"></template>
+  <!-- <view class='head'>
+    <view>
+      <image src='../../resources/images/home/logo.png' class=' logo'></image>
     </view>
-  </scroll-view>
+    <view class='tr'>
+       <image src='../../resources/images/home/title_right.png' class=' title_right'></image> 
+    </view>
+  </view> -->
+  <!-- <view class='circle'>
+    <view class='circle1 tc'>
+      <image src='../../resources/images/home/brand.png'></image>
+      <text class='f14 '>品牌</text>
+    </view>
+    <view class='circle2'>
+      <image src='../../resources/images/home/recommender.png'></image>
+      <text class='f14 '>推荐馆</text>
+    </view>
+    <view class='circle3' bindtap='goVideo'>
+      <image src='../../resources/images/home/video.png'></image>
+      <text class='f14 '>视频</text>
+    </view>
+    <view class='circle4'>
+      <image src='../../resources/images/home/contact.png'></image>
+      <text class='f14 '>联系我们</text>
+    </view>
+    <view class='circle5'>
+      <image src='../../resources/images/home/company.png'></image>
+      <text class='f14 '>公司介绍</text>
+    </view>
+  </view> -->
+
+  <!-- <video id="myVideo" src="https://www.sincereglobe.com/VIDEO/tianshi.mp4" poster="https://www.sincereglobe.com/VIDEO/tianshi.png">>
+  </video> -->
+
+  <!-- <view class='breakTop' style='height:2vw;background:#fff'></view>
+  <view class='imageOne productList'>
+    <image src='../../resources/images/home/pic1.png' mode="widthFix"></image>
+    <view class='word tc' bindtap='joinUs'>
+      <text class='f15 '>加入大王推荐官</text>
+    </view>
+  </view> -->
+
+  <block wx:for="{{productHotList}}" wx:key="id" wx:for-item="item">
+    <view class='break'></view>
+    <view class='imageTwo productList' bindtap='goProductDeatil' data-id="{{item.id}}">
+      <image src='{{item.primary_pic_url}}' mode="widthFix"></image>
+      <!-- <view class='word tc'>
+        <text class='f14 overone'>购买{{item.name}}</text>
+      </view> -->
+    </view>
+  </block>
+
 </view>

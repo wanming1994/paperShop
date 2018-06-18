@@ -283,7 +283,7 @@ Page(Object.assign({}, actionsheet, {
       return
     }
     new member(function (res) {
-      if (res.data.userIsMember >= 1) {
+      // if (res.data.userIsMember >= 1) {
         if (!that.data.receiver.id) {
           util.errShow('请选择收货地址');
         } else {
@@ -310,23 +310,24 @@ Page(Object.assign({}, actionsheet, {
             memo: that.data.memo
           })
         }
-      } else {
-        wx.showModal({
-          title: '提示',
-          content: '您还不是会员，成为会员后才可下单',
-          cancelText: '取消',
-          confirmText: '立即成为',
-          success: function (res) {
-            if (res.confirm) {
-              util.navigateTo({
-                url: '/pages/home/join/join',
-              })
-            } else if (res.cancel) {
-              console.log('用户点击取消')
-            }
-          }
-        })
-      }
+      // } 
+      // else {
+      //   wx.showModal({
+      //     title: '提示',
+      //     content: '您还不是会员，成为会员后才可下单',
+      //     cancelText: '取消',
+      //     confirmText: '立即成为',
+      //     success: function (res) {
+      //       if (res.confirm) {
+      //         util.navigateTo({
+      //           url: '/pages/home/join/join',
+      //         })
+      //       } else if (res.cancel) {
+      //         console.log('用户点击取消')
+      //       }
+      //     }
+      //   })
+      // }
     }).view()
 
   },

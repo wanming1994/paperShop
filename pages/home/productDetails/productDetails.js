@@ -170,21 +170,21 @@ Page(Object.assign({}, swiperAutoHeight, {
         })
       }
     }, function (err) {
-      if (err.errmsg == '会员才能购买') {
-        wx.hideToast()
+      // if (err.errmsg == '会员才能购买') {
+      //   wx.hideToast()
 
-        wx.showModal({
-          title: '提示',
-          content: '成为会员才可购买商品，是否立即成为会员?',
-          success: function (res) {
-            if (res.confirm) {
-              wx.navigateTo({
-                url: '../join/join',
-              })
-            }
-          }
-        })
-      }
+      //   wx.showModal({
+      //     title: '提示',
+      //     content: '成为会员才可购买商品，是否立即成为会员?',
+      //     success: function (res) {
+      //       if (res.confirm) {
+      //         wx.navigateTo({
+      //           url: '../join/join',
+      //         })
+      //       }
+      //     }
+      //   })
+      // }
     }).add({
       productId: this.data.selectData.goodsid,
       speid: this.data.selectData.id,
