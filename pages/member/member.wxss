@@ -72,6 +72,17 @@ page {
   overflow: hidden;
   padding: 2%;
 }
+.memberRadius .lineItem{
+  padding:3% 2%;
+}
+.memberRadius .lineItem .left{
+  margin-right: 10rpx;
+}
+.memberRadius .lineItem .left image{
+  width: 40rpx;
+  height: 40rpx;
+
+}
 
 .iconImg {
   display: block;

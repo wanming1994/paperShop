@@ -4,7 +4,9 @@
       <open-data type="userAvatarUrl" style="overflow: hidden;" class="image"></open-data>
     </button>
     <view class="details">
-      <view class='f14'><open-data type="userNickName" class="userName overone clr_white f14"></open-data></view>
+      <view class='f14'>
+        <open-data type="userNickName" class="userName overone clr_white f14"></open-data>
+      </view>
       <view class='f12' style='margin-top:12rpx'>{{memberInfo.userIsMember==1?'会员':'非会员'}}</view>
     </view>
   </view>
@@ -17,13 +19,13 @@
       </view>
       <view class="right"></view>
     </view>
-    <view class="flex-item lineItem  tc" bindtap='goCoupon'>
+    <!-- <view class="flex-item lineItem  tc" bindtap='goCoupon'>
       <view class='tc'>
         <view>{{couponLength}}</view>
         <view>优惠券</view>
       </view>
       <view class="right"></view>
-    </view>
+    </view> -->
     <view class="flex-item lineItem  tc" bindtap='toMyInfluence'>
       <view class='tc'>
         <view>{{memberInfo.influence}}</view>
@@ -45,7 +47,7 @@
     <view class="right"></view>
   </view>
 
-  <view class="memberRadius flex itemCenter tc f12 padding2">
+  <!-- <view class="memberRadius flex itemCenter tc f12 padding2">
     <view class="flex-item" data-current="1" bindtap="toOrder">
       <image class="iconImg" src="../../resources/images/member/unpay.png"></image>
       <view>待付款</view>
@@ -62,30 +64,42 @@
       <image class="iconImg" src="../../resources/images/member/complete.png"></image>
       <view>已完成</view>
     </view>
-    <!-- <view class="flex-item" data-current="0" bindtap="toOrder">
+     <view class="flex-item" data-current="0" bindtap="toOrder">
       <image class="iconImg" src="../../resources/images/member/all.png"></image>
       <view>全部</view>
-    </view> -->
-  </view>
+    </view> 
+  </view> -->
 
   <view class="memberRadius f14">
-    <view class="lineItem lineItem_access borderA" bindtap='toInfo'>
-      <view class="left">个人资料</view>
+    <view class="lineItem lineItem_access borderA" bindtap='toOrder' data-current="0">
+      <view class="left">
+        <image src='/resources/images/member/order.png'></image>
+      </view>
+      <view class="center">我的订单</view>
       <view class="right"></view>
     </view>
-    <view class="lineItem lineItem_access borderA">
-      <view class="center">帮助中心</view>
+    <view class="lineItem lineItem_access borderA" bindtap='chooseAddress'>
+      <view class="left">
+        <image src='/resources/images/member/address.png'></image>
+      </view>
+      <view class="center">收货地址</view>
       <view class="right"></view>
     </view>
     <view class=" lineItem lineItem_access borderA" bindtap='bindPhone'>
+      <view class="left">
+        <image src='/resources/images/member/address.png'></image>
+      </view>
       <view class="center">绑定手机号</view>
       <view class="clr_lightGray f12" wx:if="{{memberInfo.mobile}}">{{memberInfo.mobile}}</view>
       <view class="clr_lightGray f12" wx:if="{{!memberInfo.mobile}}">未绑定</view>
       <view class="right"></view>
     </view>
-    <view class="lineItem lineItem_access ">
-      <view class="center">当前版本</view>
-      <view class="right clr_lightGray f12">V1.1</view>
+    <view class="lineItem lineItem_access " bindtap='callUs'>
+      <view class="left">
+        <image src='/resources/images/member/contact.png'></image>
+      </view>
+      <view class="center">联系客服</view>
+      <view class="right clr_lightGray f12"></view>
     </view>
   </view>
 </view>

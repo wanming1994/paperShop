@@ -127,6 +127,31 @@ Page({
       url: 'order/order?id=' + id,
     })
   },
+  //收货地址
+  chooseAddress: function () {
+    try {
+      wx.chooseAddress({
+        success: function (res) {
+        },
+        fail: function (err) {
+
+          if (err.errMsg.indexOf('auth') > -1) {
+            wx.showModal({
+              title: '提示',
+              content: '未授予地址权限，是否前往设置',
+              success: function (res) {
+                if (res.confirm) {
+                  wx.openSetting()
+                }
+              }
+            })
+          }
+        }
+      })
+    } catch (e) {
+      util.errShow('微信版本过低')
+    }
+  },
   bindgetuserinfo(e) {
     let that = this
     console.log(e)
@@ -152,4 +177,19 @@ Page({
       })
     }
   },
+  //联系我们
+  callUs: function () {
+    wx.makePhoneCall({
+      phoneNumber: '0551-12345678',
+      success(res) {
+
+      },
+      fail(err) {
+        if (err.errMsg.indexOf('cancel') === -1) {
+          util.errShow('0551-12345678', 5000)
+        }
+
+      }
+    })
+  }
 })
