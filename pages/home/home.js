@@ -77,7 +77,7 @@ Page(Object.assign({}, swiperAutoHeight, {
     }
     new Product(function (data) {
       that.setData({
-        productHotList: data.data.hotGoodsList
+        categoryList: data.data.categoryList
       })
       // console.log(data)
     }).list()
