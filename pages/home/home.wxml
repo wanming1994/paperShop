@@ -24,10 +24,10 @@
     </block>
     <block wx:if='{{index==1}}'>
       <view wx:for="{{item.goodsList}}" wx:key="pitem.id" wx:for-item="pitem" class='b'>
-        <view class='item' bindtap='goProductDeatil' data-id="{{pitem.id}}">
+        <view class='item tl' bindtap='goProductDeatil' data-id="{{pitem.id}}">
           <image class="img" src="{{pitem.list_pic_url}}" background-size="cover"></image>
           <text class="name overone">{{pitem.name}}</text>
-          <text class="price">￥{{pitem.retail_price}}</text>
+          <text class="price bold">￥{{pitem.retail_price}}</text>
         </view>
       </view>
     </block>

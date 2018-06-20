@@ -73,7 +73,7 @@
   <view class="actionTitle border_bottom lineItem">
     <view class="left">
       <block wx:for="{{productList}}" wx:for-item="sitem" wx:key="id">
-        <image wx:if="{{selectData.id==sitem.id}}" src="{{sitem.pic_url||'../../../resources/images/member/nbs.jpg'}}"></image>
+        <image wx:if="{{selectData.id==sitem.id}}" src="{{sitem.pic_url||'../../../resources/images/noneimg.png'}}"></image>
       </block>
     </view>
     <view class="center f14">
@@ -89,10 +89,10 @@
     </view>
   </view>
   <view class="actionSpecifications border_bottom">
-    <view class="actionItemTitle f16">{{productData.specificationList[0].name}}：</view>
+    <view class="actionItemTitle f16" wx:if="{{productData.specificationList[0]}}">{{productData.specificationList[0].name}}：</view>
     <view class="actionItemBtn f16">
       <block wx:for="{{productList}}" wx:for-item="citem" wx:key="id" wx:for-index="iindex">
-        <text bindtap="checkout" data-id="{{citem.id}}" data-goodsid="{{citem.goods_id}}" data-number="{{citem.goods_number}}" data-value="{{citem.goods_specification_value}}" data-retail_price="{{citem.retail_price}}" class="{{citem.id==selectData.id?'active':''}}">{{citem.goods_specification_value}}</text>
+        <text bindtap="checkout" data-id="{{citem.id}}" data-goodsid="{{citem.goods_id}}" data-number="{{citem.goods_number}}" data-value="{{citem.goods_specification_value}}" data-retail_price="{{citem.retail_price}}" class="{{citem.id==selectData.id?'active':''}}">{{citem.goods_specification_value?citem.goods_specification_value:'默认规格'}}</text>
       </block>
     </view>
   </view>
