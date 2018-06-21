@@ -28,7 +28,7 @@
         <text class="clr_orange f20 bold fl" style='margin-left:2vw;'>￥{{productData.info.retail_price}}</text>
         <image src='/resources/images/product/huiyuan1.png' style='width:32rpx;height:32rpx;margin-left:40rpx;'></image>
         <text class='f14'>￥{{productData.info.member_price}}</text>
-        <text class="clr_lightGray fr f14" style='position:absolute;right:2vw;display:block;top:1vw;'>推荐官专属价</text>
+        <!--text class="clr_lightGray fr f14" style='position:absolute;right:2vw;display:block;top:1vw;'>推荐官专属价</text-->
       </view>
       <view class="center"></view>
       <view class="right f14 clr_lightGray"></view>
@@ -37,7 +37,7 @@
 
 
   <view class='product_introduction' wx:if="{{introduction}}">
-    <view class='title f14 tc padding2'>宝贝详情</view>
+    <view class='title f14 tc padding2'>商品详情</view>
     <view class="wxParse content">
       <template is="wxParse" data="{{wxParseData:introduction.nodes}}" />
       <!-- <template is="wxParse" data="{{wxParseData:introduction.nodes}}" /> -->
