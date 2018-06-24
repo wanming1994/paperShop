@@ -92,7 +92,7 @@
     <view class="actionItemTitle f16" wx:if="{{productData.specificationList[0]}}">{{productData.specificationList[0].name}}：</view>
     <view class="actionItemBtn f16">
       <block wx:for="{{productList}}" wx:for-item="citem" wx:key="id" wx:for-index="iindex">
-        <text bindtap="checkout" data-id="{{citem.id}}" data-goodsid="{{citem.goods_id}}" data-number="{{citem.goods_number}}" data-value="{{citem.goods_specification_value}}" data-retail_price="{{citem.retail_price}}" class="{{citem.id==selectData.id?'active':''}}">{{citem.goods_specification_value?citem.goods_specification_value:'默认规格'}}</text>
+        <text wx:if="{{citem.goods_specification_value}}" bindtap="checkout" data-id="{{citem.id}}" data-goodsid="{{citem.goods_id}}" data-number="{{citem.goods_number}}" data-value="{{citem.goods_specification_value}}" data-retail_price="{{citem.retail_price}}" class="{{citem.id==selectData.id?'active':''}}">{{citem.goods_specification_value?citem.goods_specification_value:''}}</text>
       </block>
     </view>
   </view>
