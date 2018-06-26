@@ -7,7 +7,16 @@
       </swiper-item>
     </block>
   </swiper> -->
-  <template is="adSwiper" data="{{_swiper,name:'top',data:imgUrls,key:topImgs.key,fn:'adTap'}}"></template>
+  <!--template is="adSwiper" data="{{_swiper,name:'top',data:imgUrls,key:topImgs.key,fn:'adTap'}}"></template-->
+
+  <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+    <swiper-item wx:for="{{banner}}" wx:key="{{item.id}}">
+      <!--navigator url="{{item.link}}"-->
+        <image src="{{item.image_url}}" background-size="cover"></image>
+      <!--/navigator-->
+    </swiper-item>
+  </swiper>
+
   <block wx:for="{{categoryList}}" wx:key="item.id">
     <view class='f14 tc categoryName'>
       <text class="line"></text>
