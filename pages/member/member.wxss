@@ -73,7 +73,7 @@ page {
   padding: 2%;
 }
 .memberRadius .lineItem{
-  padding:3% 2%;
+  padding:4% 2%;
 }
 .memberRadius .lineItem .left{
   margin-right: 10rpx;

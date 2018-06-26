@@ -1,5 +1,7 @@
 /* pages/cart/index.wxss */
-
+page{
+  border-top: 2vw solid #ececec;
+}
 .cart image {
   width: 56vw;
   height: 49vw;
