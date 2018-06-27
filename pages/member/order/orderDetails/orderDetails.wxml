@@ -50,7 +50,7 @@
           </view>
           <view class="center">
             <view class="overthree">{{item.goods_name}}</view>
-            <view class="overthree clr_lightGray">尺码：{{item.goods_specifition_name_value}}</view>
+            <view class="overthree clr_lightGray" wx:if="{{item.goods_specifition_name_value}}">规格：{{item.goods_specifition_name_value}}</view>
             <view>￥{{item.retail_price}}</view>
           </view>
           <view class="right">

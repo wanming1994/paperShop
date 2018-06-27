@@ -74,7 +74,7 @@
           </view>
           <view class="shopInfo">
             <view class="shopName f14 overone">{{orderItem.goods_name}}</view>
-            <view class="orderNumber f14 overone clr_lightGray">尺码:{{orderItem.goods_specifition_name_value}}</view>
+            <view class="orderNumber f14 overone clr_lightGray" wx:if="{{orderItem.goods_specifition_name_value}}">规格:{{orderItem.goods_specifition_name_value}}</view>
             <view class="orderNumber f14 overone">订单号:{{item.order_sn}}</view>
             <view class="shopPrice f14 clr_orange">￥ {{orderItem.retail_price}}</view>
           </view>

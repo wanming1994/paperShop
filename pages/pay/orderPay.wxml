@@ -27,7 +27,7 @@
   </view>
   <view class='center product_txt'>
     <view class='f14'>{{item.goods_name}}</view>
-    <view class='f12'>尺码：{{item.goods_specifition_name_value}}</view>
+    <view class='f12' wx:if="{{item.goods_specifition_name_value}}">规格：{{item.goods_specifition_name_value}}</view>
     <view class='lineItem f16 clr_orange price'>
       <view class='center'>￥{{item.retail_price}}</view>
       <view class='right'>X{{item.number}}</view>
@@ -104,7 +104,7 @@
     <view>{{payorderInfo.actual_price}}元</view>
   </view>
   <view style='display:flex'>
-    <view bindtap="toggleMaskPay" class="nextBtn f16" style='flex:1;margin-right:20rpx;background:#fff;color:#000;border:1px solid #333;'>改价</view>
+    <!-- <view bindtap="toggleMaskPay" class="nextBtn f16" style='flex:1;margin-right:20rpx;background:#fff;color:#000;border:1px solid #333;'>改价</view> -->
     <view bindtap="toBuyConfirm" class="nextBtn f16" style='flex:1'>付款</view>
   </view>
 </view>

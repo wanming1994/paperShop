@@ -24,7 +24,7 @@
           <view class="overone f16">{{item.goods_name}}</view>
           <view class="lineItem padding0">
             <view class="center">
-              <view class='clr_lightGray f14'>尺码:{{item.goods_specifition_name_value}}</view>
+              <view class='clr_lightGray f14' wx:if="{{item.goods_specifition_name_value}}">规格:{{item.goods_specifition_name_value}}</view>
               <view>
                 <text class="clr_orange f18">￥{{item.retail_price}}</text>
                 <!-- <text class="sumdel f12 clr_lightGray">￥{{item.market_price}}</text> -->

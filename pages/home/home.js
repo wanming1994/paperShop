@@ -99,7 +99,7 @@ Page(Object.assign({}, swiperAutoHeight, {
 
     }
     return {
-      title: '邀请您加入大王纸尿裤',
+      title: '邀请您加入天然壹家',
       path: 'pages/home/home?extension=' + app.globalData.memberInfo.userId,
       success: function (res) {
         // 转发成功

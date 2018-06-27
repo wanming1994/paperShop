@@ -75,7 +75,7 @@ Page(Object.assign({}, {
                   ctx.fillText('我是' + that.data.nickName, 0.20 * h, 0.60 * h)
                   ctx.setFillStyle('rgb(137, 110, 87)')
                   ctx.setFontSize(16)
-                  ctx.fillText('邀请您加入大王', 0.20 * h, 0.63 * h)
+                  ctx.fillText('邀请您加入天然壹家', 0.20 * h, 0.63 * h)
 
                   ctx.drawImage(that.data.qrcode, 0.15 * h, 0.68 * h, 0.24 * w, 0.24 * w)//小程序二维码
                   ctx.draw();

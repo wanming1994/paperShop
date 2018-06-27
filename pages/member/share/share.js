@@ -59,7 +59,7 @@ Page({
     if (res.from === 'button') {
       // 来自页面内转发按钮
       return {
-        title: '邀请您加入大王纸尿裤',
+        title: '邀请您加入天然壹家',
         imageUrl: 'https://www.sincereglobe.com/IMAGE/share.jpg',
         path: '/pages/home/join/join?extension=' + app.globalData.memberInfo.userId,
         success: function (res) {
