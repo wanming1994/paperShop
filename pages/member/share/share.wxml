@@ -1,5 +1,5 @@
 <view class='tc shareWrap'>
-  <text class='f16 title'>大王邀请您加入颠覆之旅</text>
+  <text class='f16 title'>天然壹家邀请您加入</text>
   <view class='imgWrap'>
     <image src='../../../resources/images/member/share.jpg' mode="widthFix"></image>
   </view>
