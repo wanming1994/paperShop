@@ -14,6 +14,7 @@
     "pages/pay/success",
     "pages/pay/pay",
     "pages/pay/orderPay",
+    "pages/pay/paySubit",
     "pages/member/member",
     "pages/member/point/index",
     "pages/member/getGoods/getGoods",
