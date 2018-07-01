@@ -1,0 +1,72 @@
+/* pages/member/cash/index.wxss */
+
+page {
+  background: #ececec;
+}
+
+.content {
+  background: #f8f8f8;
+  height: 200rpx;
+  margin-top: 50rpx;
+  /* border-top: 1px solid #c6c6c6; */
+  /* border-bottom: 1px solid #c6c6c6; */
+  margin-left: 4%;
+  margin-right: 4%;
+}
+
+.content .title {
+  padding-left: 52rpx;
+  padding-top: 32rpx;
+  padding-bottom: 10rpx;
+}
+
+.mainInput {
+  padding-left: 79rpx;
+}
+
+.mainInput text {
+  display: inline-block;
+}
+
+.mainInput input {
+  display: inline-block;
+  border-bottom: 1px solid #cbcbcb;
+  margin-left: 20rpx;
+}
+
+.continue {
+  width: 750rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  margin: 0 auto;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  border-radius: 0;
+  border: 0;
+}
+
+.continue ::after, ::before {
+  display: none;
+}
+
+.cash_desc text {
+  display: inline-block;
+}
+
+.cash_desc .fl {
+  margin-left: 52rpx;
+}
+
+.cash_desc .fr {
+  margin-right: 32rpx;
+}
+
+.padding4 {
+  padding: 2% 4%;
+}
+
+.explain {
+  border: 1px solid #999;
+  margin: 0 4%;
+}

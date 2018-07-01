@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/test/test",
     "pages/member/poster/poster",
     "pages/cart/cart",
     "pages/category/category",
@@ -19,6 +20,7 @@
     "pages/member/getGoods/getGoods",
     "pages/member/bind/bind",
     "pages/member/coupon/list",
+    "pages/member/cash/index",
     "pages/member/exchange/exchange",
     "pages/member/exchange/history",
     "pages/member/influence/influence",

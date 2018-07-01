@@ -35,12 +35,12 @@
   </view>
 </view>
 
-<view class='f16  payStyleTitle' wx:if="{{selectDiscount.length>0}}">选择优惠方式：</view>
+<!-- <view class='f16  payStyleTitle' wx:if="{{selectDiscount.length>0}}">选择优惠方式：</view>
 <radio-group class="radio-group tc" bindchange="radioChange" wx:if="{{selectDiscount.length>0}}">
   <label class="radio f16" wx:for="{{selectDiscount}}" wx:key="id">
     <radio value="{{item.type}}" checked="{{item.type=='coupon'}}" color='#ffa73d' />{{item.name}}
   </label>
-</radio-group>
+</radio-group> -->
 
 
 

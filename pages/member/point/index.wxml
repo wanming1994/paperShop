@@ -3,7 +3,7 @@
   <view class='viewPoint tc '>
     <view class='f14 title'>可用积分</view>
     <view class='f20 clr-white'>{{balanceScore}}</view>
-    <view class='f14 store' bindtap='goPointShop'>积分商城
+    <view class='f14 store' bindtap='goPointShop'>积分提现
       <text class='iconfont icon-icon f14'></text>
     </view>
   </view>

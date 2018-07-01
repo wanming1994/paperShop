@@ -24,8 +24,11 @@ Page(Object.assign({}, actionsheet, payTemp, {
 
   //goPointShop
   goPointShop() {
+    // util.navigateTo({
+    //   url: '../exchange/exchange',
+    // })
     util.navigateTo({
-      url: '../exchange/exchange',
+      url: '../cash/index',
     })
   },
   bindChange: function (e) {//滑动选项卡
