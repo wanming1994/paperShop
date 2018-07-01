@@ -89,7 +89,6 @@ Page(Object.assign({}, actionsheet, {
         couponList: data.data.couponList
       })
       //判断优惠券的数量
-
       if (data.data.couponList.length > 0 && data.data.userBonus > 0) {
         this.setData({
           selectDiscount: [
@@ -294,14 +293,18 @@ Page(Object.assign({}, actionsheet, {
               wx.redirectTo({
                 url: '/pages/pay/success?orderId=' + res.data.orderInfo.id,
               })
+            }else{
+              wx.redirectTo({
+                url: '/pages/pay/paySubit?id=' + res.data.orderInfo.id,
+              })
             }
-            that.setData({
-              showPayDetail: true,
-              orderId: res.data.orderInfo.id
-            })
-            that.setData({
-              payorderInfo: res.data.orderInfo
-            })
+            // that.setData({
+            //   showPayDetail: true,
+            //   orderId: res.data.orderInfo.id
+            // })
+            // that.setData({
+            //   payorderInfo: res.data.orderInfo
+            // })
           }).submit({
             addressId: that.data.orderInfo.address.id,
             userScore: that.data.defaultDiscount=='score'?that.data.userScoreInput:0,

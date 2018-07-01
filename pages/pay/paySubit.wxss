@@ -1,0 +1,38 @@
+/* pages/pay/paySubit.wxss */
+page{
+  background: #ececec;
+}
+.priceInfo{
+  margin-top: 2vw;
+  background: #fff;
+  padding: 20rpx 0;
+}
+.orderInfo{
+  background: #fff;
+}
+.orderInfo .lineItem{
+  border-bottom: 1px solid #ececec;
+  padding: 3% 2%;
+  margin-left: 2%;
+}
+.payMethod {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 40rpx;
+  background: #fff;
+}
+
+.payMethod image {
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.submit {
+  width:70%;
+  margin: 200rpx auto 0;
+  line-height: 2.5;
+  font-size: 32rpx;
+}
