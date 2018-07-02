@@ -26,21 +26,10 @@ Page({
     })
   },
   cashSubmit() {
-    if (!this.data.bank_number) {
-      wx.showToast({
-        title: '请先去绑定银行卡',
-        icon: 'none'
-      })
-    } else if (!this.data.cashAmount) {
+    if (!this.data.cashAmount) {
       wx.showToast({
         title: '请输入提现金额',
         icon: 'none'
-      })
-    } else if (this.data.is_withdraws) {
-      wx.showModal({
-        title: '提示',
-        showCancel: false,
-        content: '您有正在提现未到账的记录,请到账后在尝试',
       })
     } else if (this.data.cashAmount > this.data.money) {
       wx.showToast({
@@ -49,10 +38,16 @@ Page({
       })
     } else {
       new member(res => {
-        wx.navigateTo({
-          url: 'status',
+        wx.showToast({
+          title: '提现成功',
+          icon: 'none'
         })
-      }).withdraws({
+        setTimeout(function() {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 1500)
+      }).getscoreProductt({
         money: this.data.cashAmount
       })
     }
@@ -70,9 +65,8 @@ Page({
   onShow: function() {
     new member(res => {
       this.setData({
-        is_withdraws: res.data.is_withdraws,
-        money: res.data.money
+        money: res.data.bonus
       })
-    }).cash_show()
+    }).view()
   }
 })

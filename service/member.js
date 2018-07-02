@@ -131,5 +131,16 @@ module.exports = class Member extends Ajax {
     })
   }
 
+  /**
+     * 提现发起
+     * money金额
+     */
+  getscoreProductt(data) {
+    super.post({
+      url: "Withdraw/withDrawMoney",
+      data: data
+    })
+  }
+
 
 }
