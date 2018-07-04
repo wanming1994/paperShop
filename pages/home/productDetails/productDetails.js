@@ -81,6 +81,7 @@ Page(Object.assign({}, swiperAutoHeight, {
           value: res.data.productList[0] ? res.data.productList[0].goods_specification_value : '',
           count: 1,
           retail_price: res.data.productList[0] ? res.data.productList[0].retail_price : '',
+          member_price: res.data.productList[0] ? res.data.productList[0].member_price : '',
         }
       })
 

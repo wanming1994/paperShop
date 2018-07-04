@@ -77,7 +77,10 @@
       </block>
     </view>
     <view class="center f14">
-      <view class="f16 clr_orange bold">￥{{selectData.retail_price}}</view>
+      <view class="f16 clr_orange bold">￥{{selectData.retail_price}}
+        <text class='f12 clr_darkGray' style='display:inline-block;padding-left:10rpx;'>会员价</text>
+        <text class='f14'>￥{{productData.info.member_price}}</text>
+      </view>
       <!-- <view class="f16 clr_orange bold">{{productData.info.name}}</view> -->
       <view>库存{{selectData.number}}件</view>
       <!-- <view>已选
@@ -92,7 +95,8 @@
     <view class="actionItemTitle f16" wx:if="{{productData.specificationList[0]}}">{{productData.specificationList[0].name}}：</view>
     <view class="actionItemBtn f16">
       <block wx:for="{{productList}}" wx:for-item="citem" wx:key="id" wx:for-index="iindex">
-        <text wx:if="{{citem.goods_specification_value}}" bindtap="checkout" data-id="{{citem.id}}" data-goodsid="{{citem.goods_id}}" data-number="{{citem.goods_number}}" data-value="{{citem.goods_specification_value}}" data-retail_price="{{citem.retail_price}}" class="{{citem.id==selectData.id?'active':''}}">{{citem.goods_specification_value?citem.goods_specification_value:''}}</text>
+        <text wx:if="{{citem.goods_specification_value}}" bindtap="checkout" data-id="{{citem.id}}" data-goodsid="{{citem.goods_id}}" data-number="{{citem.goods_number}}" data-value="{{citem.goods_specification_value}}" data-retail_price="{{citem.retail_price}}"
+          class="{{citem.id==selectData.id?'active':''}}">{{citem.goods_specification_value?citem.goods_specification_value:''}}</text>
       </block>
     </view>
   </view>
