@@ -7,7 +7,7 @@
       <view class='f14'>
         <open-data type="userNickName" class="userName overone clr_white f14"></open-data>
       </view>
-      <view class='f12' style='margin-top:12rpx'>{{memberInfo.userIsMember==1?'会员':'非会员'}}</view>
+      <view class='f12' style='margin-top:12rpx'>{{memberInfo.userIsMember==1?memberInfo.levelName:'非会员'}}</view>
     </view>
   </view>
 
