@@ -231,3 +231,7 @@
   font-size: 32rpx;
   /* color: #b4282d; */
 }
+
+.productList_one{
+  border-bottom: 1vw solid #ececec;
+}

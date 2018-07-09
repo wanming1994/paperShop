@@ -26,8 +26,8 @@
     <view class="lineItem padding0" style='border-top:1px solid #cfcfcf;border-bottom:1px solid #cfcfcf;'>
       <view class="left lineH_two" style='align-items:center;width:100%;position:relative;'>
         <text class="clr_orange f20 bold fl" style='margin-left:2vw;'>￥{{productData.info.retail_price}}</text>
-        <image src='/resources/images/product/huiyuan1.png' style='width:32rpx;height:32rpx;margin-left:40rpx;'></image>
-        <text class='f14'>￥{{productData.info.member_price}}</text>
+        <!-- <image src='/resources/images/product/huiyuan1.png' style='width:32rpx;height:32rpx;margin-left:40rpx;'></image> -->
+        <text class='f14 clr_red paddding2' style='display:inline-block;margin-left:15rpx;'>会员价￥{{productData.info.member_price}}</text>
         <!--text class="clr_lightGray fr f14" style='position:absolute;right:2vw;display:block;top:1vw;'>推荐官专属价</text-->
       </view>
       <view class="center"></view>
@@ -47,7 +47,12 @@
 
 <view class="tab">
   <view class="clr_lightGray f14 left">
-    <button open-type="contact" hover-class="none" class="f14" session-from="weapp" send-message-title="亲！我正在看这个商品" send-message-path="/pages/home/productDetails/productDetails?id={{productData.id}}" show-message-card="true" style='border-radius:0;border-right:1px solid #cfcfcf;'>
+    <view bindtap="toHome" style='position:relative;'>
+      <image src="/resources/images/tabBar/1.2.png"></image>
+      <view class="">首页</view>
+      <text class="tips baseBg" wx:if="{{cartCount}}">{{cartCount}}</text>
+    </view>
+    <button open-type="contact" hover-class="none" class="f14" session-from="weapp" send-message-title="亲！我正在看这个商品" send-message-path="/pages/home/productDetails/productDetails?id={{productData.id}}" show-message-card="true" style='border-radius:0'>
       <image src="/resources/images/icon/kefu.png"></image>
       <view class="">客服</view>
     </button>

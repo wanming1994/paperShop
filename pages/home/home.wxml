@@ -12,7 +12,7 @@
   <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
     <swiper-item wx:for="{{banner}}" wx:key="{{item.id}}">
       <!--navigator url="{{item.link}}"-->
-        <image src="{{item.image_url}}" background-size="cover"></image>
+      <image src="{{item.image_url}}" background-size="cover"></image>
       <!--/navigator-->
     </swiper-item>
   </swiper>
@@ -24,7 +24,7 @@
       <text class="line"></text>
     </view>
     <block wx:if='{{index==0}}'>
-      <view wx:for="{{item.goodsList}}" wx:key="pitem.id" wx:for-item="pitem">
+      <view wx:for="{{item.goodsList}}" wx:key="pitem.id" wx:for-item="pitem" class='productList_one'>
         <view class='break'></view>
         <view class='imageTwo productList' bindtap='goProductDeatil' data-id="{{pitem.id}}">
           <image src='{{pitem.list_pic_url}}' mode="widthFix"></image>
@@ -32,11 +32,13 @@
       </view>
     </block>
     <block wx:if='{{index==1}}'>
-      <view  class='b'>
-        <view  wx:for="{{item.goodsList}}" wx:key="pitem.id" wx:for-item="pitem" class='item tl' bindtap='goProductDeatil' data-id="{{pitem.id}}">
+      <view class='b'>
+        <view wx:for="{{item.goodsList}}" wx:key="pitem.id" wx:for-item="pitem" class='item tl' bindtap='goProductDeatil' data-id="{{pitem.id}}">
           <image class="img" src="{{pitem.list_pic_url}}" background-size="cover"></image>
           <text class="name overone">{{pitem.name}}</text>
-          <text class="price bold">￥{{pitem.retail_price}}</text>
+          <view class="price bold">￥{{pitem.retail_price}}
+            <text class="f12 bold clr_red" wx:if="{{pitem.member_price}}">会员价￥{{pitem.member_price}}</text>
+          </view>
         </view>
       </view>
     </block>

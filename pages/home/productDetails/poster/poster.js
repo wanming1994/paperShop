@@ -16,7 +16,7 @@ Page(Object.assign({}, {
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     if (app.globalData.LOGIN_STATUS) {
       this.getData(options)
     } else {
@@ -34,6 +34,7 @@ Page(Object.assign({}, {
         productImg: res.data.info.list_pic_url,
         name: res.data.info.name,
         price: res.data.info.retail_price,
+        memberPrice: res.data.info.member_price,
         id: id
       })
     }).view({
@@ -41,20 +42,21 @@ Page(Object.assign({}, {
     })
 
     var res1 = '/resources/images/product/poster.png'
-    var headImg = '', picImg = '';
+    var headImg = '',
+      picImg = '';
     new product((res) => {
       wx.downloadFile({
         url: res.data,
-        success: function (res) {
+        success: function(res) {
           that.setData({
             qrcode: res.tempFilePath
           })
           wx.downloadFile({
             url: that.data.productImg,
-            success: function (res) {
+            success: function(res) {
               picImg = res.tempFilePath
               wx.getSystemInfo({
-                success: function (res) {
+                success: function(res) {
                   that.setData({
                     canvasw: res.windowWidth + 'px',
                     canvash: res.windowHeight + 'px'
@@ -64,33 +66,28 @@ Page(Object.assign({}, {
                   const ctx = wx.createCanvasContext('myCanvas')
                   ctx.setFillStyle('rgb(255, 255, 255)')
                   ctx.fillRect(0, 0, w, h)
-                  ctx.drawImage(res1, 0, 0, w, h)//背景图大
+                  ctx.drawImage(res1, 0, 0, w, h) //背景图大
                   ctx.save();
                   ctx.beginPath()
 
-
-                  // ctx.arc(0.15 * w + 0.15 * w / 2, 0.56 * h + 0.15 * w / 2, 0.15 * w / 2, 0, 2 * Math.PI);
-                  // ctx.setStrokeStyle('#ffffff')
-                  // ctx.clip();
-                  // ctx.drawImage(headImg, 0.15 * w, 0.56 * h, 0.15 * w, 0.15 * w)//小程序二维码
-                  // ctx.stroke();
-                  // ctx.closePath();
-                  // ctx.restore();
-
+                  //商品名称
                   ctx.setTextAlign('center')
-                  ctx.setFillStyle('rgb(255, 255, 255)')
-                  ctx.setFontSize(20)
-                  ctx.fillText('￥' + that.data.price, w / 2, 0.56 * h)
-
-                  ctx.setTextAlign('center')
-                  // ctx.setFillStyle('rgb(43, 43, 43)')
-                  // ctx.setFontSize(14)
-                  // ctx.fillText('我是' + that.data.nickName, 0.20 * h, 0.60 * h)
                   ctx.setFillStyle('rgb(0, 0, 0)')
                   ctx.setFontSize(18)
-                  ctx.fillText(that.data.name, w / 2, 0.63 * h)
-                  ctx.drawImage(picImg, 0.19 * w, 0.11 * h, 0.62 * w, 0.60 * w)//小程序二维码
-                  ctx.drawImage(that.data.qrcode, 0.35 * w, 0.70 * h, 0.3 * w, 0.3 * w)//小程序二维码
+                  ctx.fillText(that.data.name, w / 2, 0.54 * h)
+
+                  ctx.setTextAlign('center')
+                  ctx.setFillStyle('rgb(0, 0, 0)')
+                  ctx.setFontSize(20)
+                  ctx.fillText('￥' + that.data.price, w / 2, 0.59 * h)
+                  ctx.setFillStyle('rgb(205,51,51)')
+                  ctx.setFontSize(16)
+                  ctx.fillText('会员价' + '￥' + that.data.memberPrice, w / 2 + 10, 0.64 * h)
+
+
+
+                  ctx.drawImage(picImg, 0.2 * w, 0.13 * h, 0.60 * w, 0.60 * w) //商品图片
+                  ctx.drawImage(that.data.qrcode, 0.35 * w, 0.70 * h, 0.3 * w, 0.3 * w) //小程序二维码
                   ctx.draw();
                   setTimeout(function () {
                     wx.showModal({
@@ -98,7 +95,8 @@ Page(Object.assign({}, {
                       content: '长按可保存海报至相册，再去分享朋友圈',
                     })
                   }, 500)
-                }, fail: function (e) {
+                },
+                fail: function(e) {
                   console.log(e)
                 }
               })
@@ -121,14 +119,14 @@ Page(Object.assign({}, {
         // console.log(res)
         wx.saveImageToPhotosAlbum({
           filePath: res.tempFilePath,
-          success: function (res) {
+          success: function(res) {
             wx.showToast({
               title: '图片已保存相册',
               icon: 'success',
               duration: 2000
             })
           },
-          fail: function (res) {
+          fail: function(res) {
             console.log(res)
           }
         })
@@ -138,42 +136,42 @@ Page(Object.assign({}, {
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   }
 }))

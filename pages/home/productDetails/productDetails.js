@@ -19,11 +19,11 @@ function getRandomColor() {
 
 Page(Object.assign({}, swiperAutoHeight, {
 
-  onReady: function (res) {
+  onReady: function(res) {
     this.videoContext = wx.createVideoContext('myVideo')
   },
   inputValue: '',
-  bindInputBlur: function (e) {
+  bindInputBlur: function(e) {
     this.inputValue = e.detail.value
   },
   /**
@@ -31,22 +31,22 @@ Page(Object.assign({}, swiperAutoHeight, {
    */
   data: {
     goodsAmount: 1,
-    sys: app.globalData.sys,//系统信息
-    productData: {},//数据
-    showAction: false,//显示弹窗
-    buyType: 'buy',//buy or cart
-    specification: {},//商品规格
+    sys: app.globalData.sys, //系统信息
+    productData: {}, //数据
+    showAction: false, //显示弹窗
+    buyType: 'buy', //buy or cart
+    specification: {}, //商品规格
     canClick: [],
-    pageLoad: false,//页面加载完成
-    userScoreInput: 0,//付款使用积分
-    scoreMax: 0,//可用积分
-    selectData: {},//选中规格
+    pageLoad: false, //页面加载完成
+    userScoreInput: 0, //付款使用积分
+    scoreMax: 0, //可用积分
+    selectData: {}, //选中规格
     showShortcut: false
   },
   catchActionMask(e) {
     return false;
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     if (app.globalData.LOGIN_STATUS) {
       this.getData(options)
     } else {
@@ -104,7 +104,7 @@ Page(Object.assign({}, swiperAutoHeight, {
     })
   },
   //快捷导航点击事件
-  openShortcut: function () {
+  openShortcut: function() {
     this.setData({
       showShortcut: !this.data.showShortcut
     })
@@ -148,11 +148,16 @@ Page(Object.assign({}, swiperAutoHeight, {
       url: '/pages/cart/cart',
     })
   },
+  toHome() {
+    wx.switchTab({
+      url: '/pages/home/home',
+    })
+  },
 
   /**
-  * 页面上拉触底事件的处理函数
-  */
-  onReachBottom: function () {
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function() {
 
   },
   paySubmitSel() {
@@ -170,7 +175,7 @@ Page(Object.assign({}, swiperAutoHeight, {
           duration: 1000
         })
       }
-    }, function (err) {
+    }, function(err) {
       // if (err.errmsg == '会员才能购买') {
       //   wx.hideToast()
 
@@ -194,11 +199,11 @@ Page(Object.assign({}, swiperAutoHeight, {
     })
   },
   //立即购买确认按钮
-  paySubmit: function () {
+  paySubmit: function() {
     let that = this;
     wx.showLoading()
     //创建订单submit
-    new order(function (res) {
+    new order(function(res) {
       wx.hideLoading()
       that.setData({
         userScoreInput: res.data.userScore,
@@ -210,7 +215,7 @@ Page(Object.assign({}, swiperAutoHeight, {
       })
 
       //计算初始积分抵扣现金（默认使用最大积分来抵现）
-      new order(function (data) {
+      new order(function(data) {
         that.setData({
           scoreMoney: data.data.scoreMoney < that.data.actual_price ? data.data.scoreMoney : that.data.actual_price,
           trueAmount: res.data.orderInfo.actual_price - data.data.scoreMoney >= 0 ? res.data.orderInfo.actual_price - data.data.scoreMoney : 0
@@ -229,7 +234,7 @@ Page(Object.assign({}, swiperAutoHeight, {
   toBuyConfirm() {
     let that = this;
     //发起支付接口
-    new order(function (data) {
+    new order(function(data) {
       that.setData({
         showBuyDetail: false,
         showAction: false,
@@ -240,15 +245,14 @@ Page(Object.assign({}, swiperAutoHeight, {
         'package': data.data.package,
         'signType': 'MD5',
         'paySign': data.data.paySign,
-        'success': function (res) {
+        'success': function(res) {
           wx.showToast({
             title: '支付成功',
             icon: 'success',
             duration: 1000
           })
         },
-        'fail': function (res) {
-        }
+        'fail': function(res) {}
       })
     }).goPay({
       orderId: that.data.orderId,
@@ -267,7 +271,7 @@ Page(Object.assign({}, swiperAutoHeight, {
     let that = this;
     let val = parseInt(e.detail.value)
     let userScoreInput = val > this.data.scoreMax ? this.data.scoreMax : val
-    new order(function (data) {
+    new order(function(data) {
       that.setData({
         scoreMoney: data.data.scoreMoney,
         userScoreInput: userScoreInput ? userScoreInput : 0,
@@ -279,7 +283,7 @@ Page(Object.assign({}, swiperAutoHeight, {
     })
 
   },
-  toggleshowShortcut: function () {
+  toggleshowShortcut: function() {
     this.setData({
       showShortcut: false
     })
@@ -291,39 +295,41 @@ Page(Object.assign({}, swiperAutoHeight, {
     })
   },
 
-  onShareAppMessage: function (res) {
+  onShareAppMessage: function(res) {
     var that = this;
-    this.setData({
-      showShortcut: !this.data.showShortcut
-    })
+
     if (res.from === 'button') {
+      this.setData({
+        showShortcut: !this.data.showShortcut
+      })
       // 来自页面内转发按钮
       return {
         title: that.data.title,
         path: 'pages/home/productDetails/productDetails?id=' + that.data.id + '&extension=' + app.globalData.memberInfo.userId,
-        success: function (res) {
+        success: function(res) {
           // 转发成功
           wx.showToast({
             title: '转发成功',
             icon: 'success'
           })
         },
-        fail: function (res) {
+        fail: function(res) {
           // 转发失败
         }
       }
     }
+
     return {
       title: that.data.title,
       path: 'pages/home/productDetails/productDetails?id=' + that.data.id + '&extension=' + app.globalData.memberInfo.userId,
-      success: function (res) {
+      success: function(res) {
         // 转发成功
         wx.showToast({
           title: '转发成功',
           icon: 'success'
         })
       },
-      fail: function (res) {
+      fail: function(res) {
         // 转发失败
       }
     }

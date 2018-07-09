@@ -29,7 +29,7 @@
     <view class="flex-item lineItem  tc" bindtap='toMyInfluence'>
       <view class='tc'>
         <view>{{memberInfo.influence}}</view>
-        <view>我的影响力</view>
+        <view>我的好友</view>
       </view>
       <view class="right"></view>
     </view>
@@ -43,7 +43,7 @@
 
   <view class="memberRadius lineItem lineItem_access f14" style='padding:3%;' bindtap='goShare'>
     <view class="center">分享推广</view>
-    <view class="clr_lightGray">您的口碑价值百万</view>
+    <view class="clr_lightGray"></view>
     <view class="right"></view>
   </view>
 
