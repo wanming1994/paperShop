@@ -47,6 +47,12 @@
     <view class="right"></view>
   </view>
 
+  <view class="memberRadius lineItem lineItem_access f14" style='padding:3%;' bindtap='goPartner'>
+    <view class="center">加入合伙人</view>
+    <view class="clr_lightGray"></view>
+    <view class="right"></view>
+  </view>
+
   <!-- <view class="memberRadius flex itemCenter tc f12 padding2">
     <view class="flex-item" data-current="1" bindtap="toOrder">
       <image class="iconImg" src="../../resources/images/member/unpay.png"></image>

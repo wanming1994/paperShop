@@ -15,7 +15,7 @@ Page(Object.assign({}, {
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     if (app.globalData.LOGIN_STATUS) {
       this.getData(options)
     } else {
@@ -27,28 +27,28 @@ Page(Object.assign({}, {
   },
   getData() {
     var that = this;
-    new member(res=>{
+    new member(res => {
       this.setData({
         nickName: res.data.nickName,
         avatarUrl: res.data.avatarUrl
       })
     }).view()
-   
+
     var res1 = '/resources/images/member/poster_bg.png'
     var headImg = '';
     new member((res) => {
       wx.downloadFile({
         url: res.data,
-        success: function (res) {
+        success: function(res) {
           that.setData({
             qrcode: res.tempFilePath
           })
           wx.downloadFile({
             url: that.data.avatarUrl,
-            success: function (res) {
+            success: function(res) {
               headImg = res.tempFilePath
               wx.getSystemInfo({
-                success: function (res) {
+                success: function(res) {
                   that.setData({
                     canvasw: res.windowWidth + 'px',
                     canvash: res.windowHeight + 'px'
@@ -58,26 +58,28 @@ Page(Object.assign({}, {
                   const ctx = wx.createCanvasContext('myCanvas')
                   ctx.setFillStyle('rgb(255, 255, 255)')
                   ctx.fillRect(0, 0, w, h)
-                  ctx.drawImage(res1, 0, 0, w, h)//背景图大
+                  ctx.drawImage(res1, 0, 0, w, h) //背景图大
                   ctx.save();
                   ctx.beginPath()
-                  ctx.arc(0.15 * w + 0.15 * w / 2, 0.56 * h + 0.15 * w / 2, 0.15 * w / 2, 0, 2 * Math.PI);
+
+
+
+                  ctx.arc(0.375 * w + 0.25 * w / 2, 0.05 * h + 0.25 * w / 2, 0.25 * w / 2, 0, 2 * Math.PI);
                   ctx.setStrokeStyle('#ffffff')
                   ctx.clip();
-                  ctx.drawImage(headImg, 0.15 * w, 0.56 * h, 0.15 * w, 0.15 * w)//小程序二维码
+                  ctx.drawImage(headImg, 0.375 * w, 0.05 * h, 0.25 * w, 0.25 * w) //个人头像
                   ctx.stroke();
                   ctx.closePath();
                   ctx.restore();
 
-                  ctx.setTextAlign('left')
-                  ctx.setFillStyle('rgb(43, 43, 43)')
-                  ctx.setFontSize(14)
-                  ctx.fillText('我是' + that.data.nickName, 0.20 * h, 0.60 * h)
-                  ctx.setFillStyle('rgb(137, 110, 87)')
-                  ctx.setFontSize(16)
-                  ctx.fillText('邀请您加入天然壹家', 0.20 * h, 0.63 * h)
+                  //昵称
+                  ctx.setTextAlign('center')
+                  ctx.setFillStyle('rgb(255, 255, 255)')
+                  ctx.setFontSize(18)
+                  ctx.fillText(that.data.nickName, w / 2, 0.09 * h + 0.25 * w)
 
-                  ctx.drawImage(that.data.qrcode, 0.15 * h, 0.68 * h, 0.24 * w, 0.24 * w)//小程序二维码
+
+                  ctx.drawImage(that.data.qrcode, 0.33 * w, 0.76 * h, 0.34 * w, 0.34 * w) //小程序二维码
                   ctx.draw();
                   setTimeout(function () {
                     wx.showModal({
@@ -85,7 +87,8 @@ Page(Object.assign({}, {
                       content: '长按可保存海报至相册，再去分享朋友圈',
                     })
                   }, 500)
-                }, fail: function (e) {
+                },
+                fail: function(e) {
                   console.log(e)
                 }
               })
@@ -106,14 +109,14 @@ Page(Object.assign({}, {
         // console.log(res)
         wx.saveImageToPhotosAlbum({
           filePath: res.tempFilePath,
-          success: function (res) {
+          success: function(res) {
             wx.showToast({
               title: '图片已保存相册',
               icon: 'success',
               duration: 2000
             })
           },
-          fail: function (res) {
+          fail: function(res) {
             console.log(res)
           }
         })
@@ -123,42 +126,42 @@ Page(Object.assign({}, {
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   }
 }))
