@@ -98,35 +98,25 @@ Page({
     }).getUserName({
       userId: wx.getStorageSync('extension') ? wx.getStorageSync('extension') : ''
     })
-    new member(function(res) {
-      if (res.data.userIsMember != 1) {
-        //创建订单submit
-        new order(function(res) {
-          wx.showToast({
-            title: '恭喜您成为会员',
-            icon: 'success',
-            duration: 1000
-          })
-        }, function(err) {
-          if (err.errno == 1 && err.errmsg == '你已经是会员了') {
-            setTimeout(function() {
-              wx.switchTab({
-                url: '/pages/home/home',
-              })
-            }, 500)
-          }
-        }).submit({
-          orderType: 3,
-          recommendUserId: wx.getStorageSync('extension') ? wx.getStorageSync('extension') : ''
-        })
-      } else {
+    //创建订单submit
+    new order(function(res) {
+      wx.showToast({
+        title: '恭喜您成为会员',
+        icon: 'success',
+        duration: 1000
+      })
+    }, function(err) {
+      if (err.errno == 1 && err.errmsg == '您已经是会员') {
         // setTimeout(function() {
         //   wx.switchTab({
         //     url: '/pages/home/home',
         //   })
-        // }, 1)
+        // }, 500)
       }
-    }).view()
+    }).submit({
+      orderType: 3,
+      recommendUserId: wx.getStorageSync('extension') ? wx.getStorageSync('extension') : ''
+    })
   },
 
   goHome: function() {
