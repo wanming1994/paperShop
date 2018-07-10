@@ -120,11 +120,11 @@ Page({
           recommendUserId: wx.getStorageSync('extension') ? wx.getStorageSync('extension') : ''
         })
       } else {
-        setTimeout(function() {
-          wx.switchTab({
-            url: '/pages/home/home',
-          })
-        }, 1)
+        // setTimeout(function() {
+        //   wx.switchTab({
+        //     url: '/pages/home/home',
+        //   })
+        // }, 1)
       }
     }).view()
   },

@@ -31,8 +31,27 @@ Page({
       })
     } else {
       new Member(res => {
-        new Member(res=>{
-
+        new Member(data => {
+          wx.requestPayment({
+            'timeStamp': data.data.timeStamp,
+            'nonceStr': data.data.nonceStr,
+            'package': data.data.package,
+            'signType': 'MD5',
+            'paySign': data.data.paySign,
+            'success': function(res) {
+              wx.showToast({
+                title: '恭喜您成为合伙人',
+                icon: 'success',
+                duration: 1000,
+                success: function() {
+                  // wx.redirectTo({
+                  //   url: '/pages/pay/success?orderId=' + that.data.orderId
+                  // })
+                }
+              })
+            },
+            'fail': function(res) {}
+          })
         }).payPartner()
       }).updateView({
         avatarUrl: e.detail.userInfo.avatarUrl,

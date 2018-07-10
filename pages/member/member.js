@@ -6,14 +6,14 @@ Page({
   data: {
     memberInfo: app.globalData.memberInfo
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
-  onReady: function () {
+  onReady: function() {
 
   },
 
-  onShow: function () {
+  onShow: function() {
     var that = this;
     if (app.globalData.LOGIN_STATUS) {
       this.getInfoWhenLogin()
@@ -23,19 +23,19 @@ Page({
       })
     }
   },
-  getInfoWhenLogin: function () {
+  getInfoWhenLogin: function() {
     var that = this;
     // that.setData({
     //   memberInfo:app.globalData.memberInfo
     // })
-    new member(function (data) {
+    new member(function(data) {
       that.setData({
         memberInfo: data.data
       })
     }).view()
 
     //优惠券数量
-    new coupon(function (data) {
+    new coupon(function(data) {
       that.setData({
         couponLength: data.data.length
       })
@@ -80,36 +80,42 @@ Page({
   },
 
   //个人资料
-  toInfo: function () {
+  toInfo: function() {
     util.navigateTo({
       url: 'info/info',
     })
   },
   //积分兑换
-  goExchange: function () {
+  goExchange: function() {
     util.navigateTo({
       url: 'point/index',
     })
   },
-  goCoupon: function () {
+  goCoupon: function() {
     util.navigateTo({
       url: 'coupon/list',
     })
   },
   //我的影响力
-  toMyInfluence: function () {
+  toMyInfluence: function() {
     util.navigateTo({
       url: 'influence/influence',
     })
   },
+  //加入合伙人
+  goPartner() {
+    util.navigateTo({
+      url: 'partner/index',
+    })
+  },
   //分享
-  goShare: function () {
+  goShare: function() {
     util.navigateTo({
       url: 'share/share',
     })
   },
   //绑定手机
-  bindPhone: function () {
+  bindPhone: function() {
     if (this.data.memberInfo.mobile) {
       util.errShow('您已绑定')
     } else {
@@ -121,25 +127,24 @@ Page({
   },
 
   //我的订单
-  toOrder: function (e) {
+  toOrder: function(e) {
     var id = e.currentTarget.dataset.current
     util.navigateTo({
       url: 'order/order?id=' + id,
     })
   },
   //收货地址
-  chooseAddress: function () {
+  chooseAddress: function() {
     try {
       wx.chooseAddress({
-        success: function (res) {
-        },
-        fail: function (err) {
+        success: function(res) {},
+        fail: function(err) {
 
           if (err.errMsg.indexOf('auth') > -1) {
             wx.showModal({
               title: '提示',
               content: '未授予地址权限，是否前往设置',
-              success: function (res) {
+              success: function(res) {
                 if (res.confirm) {
                   wx.openSetting()
                 }
@@ -166,19 +171,19 @@ Page({
           title: '授权成功',
           icon: 'none'
         })
-        new member(function (data) {
+        new member(function(data) {
           that.setData({
             memberInfo: data.data
           })
         }).view()
       }).updateView({
         avatarUrl: e.detail.userInfo.avatarUrl,
-        nickName: e.detail.userInfo.nickName/*  */
+        nickName: e.detail.userInfo.nickName /*  */
       })
     }
   },
   //联系我们
-  callUs: function () {
+  callUs: function() {
     wx.makePhoneCall({
       phoneNumber: '0551-12345678',
       success(res) {
