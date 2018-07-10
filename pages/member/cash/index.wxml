@@ -13,11 +13,8 @@
 
 <view class='padding4 clr_lightGray f14'>提现说明</view>
 <view class='padding2 explain f14 clr_mediumGray'>
-  <view>1.随时提现，随时处理，没有时间限制。</view>
-  <view>2.随时提现，随时处理，没有时间限制。</view>
-  <view>3.随时提现，随时处理，没有时间限制。</view>
-  <view>4.随时提现，随时处理，没有时间限制。</view>
-  <view>5.随时提现，随时处理，没有时间限制。</view>
+  <view>1、提现会直接到个人微信钱包；</view>
+  <view>2、提现开通日期为2018年8月10日开始。</view>
 </view>
 
 
