@@ -1,66 +1,48 @@
-// pages/member/partner/index.js
+//获取应用实例
+var app = getApp()
+var Member = require("../../../service/member.js")
+var util = require("../../../utils/util")
+var countdown = util.countdown //验证码计时
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    fee: 0
+  },
+  onLoad: function(info) {
+    new Member(res => {
+      this.setData({
+        fee: res.data.fee
+      })
+    }).applyPartner()
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+  onShow: function() {
+
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+
+  //输入框变化
+  bindgetuserinfo(e) {
+    let that = this
+    console.log(e)
+    if (e.detail.errMsg.indexOf('fail') > -1) {
+      wx.showToast({
+        title: '请授权用户信息!',
+        icon: 'none'
+      })
+    } else {
+      new Member(res => {
+        new Member(res=>{
+
+        }).payPartner()
+      }).updateView({
+        avatarUrl: e.detail.userInfo.avatarUrl,
+        nickName: e.detail.userInfo.nickName /*  */
+      })
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
+  submit: function() { //提交
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
   }
 })

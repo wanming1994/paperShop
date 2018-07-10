@@ -1,1 +1,8 @@
 /* pages/member/partner/index.wxss */
+.topInfo image{
+  width: 100%;
+}
+.submit{
+  width: 70%;
+  margin: 60rpx auto;
+}
