@@ -28,7 +28,7 @@
         <view class="clr_lightGray f14  " style='margin-left:2vw;'>市场价￥{{productData.info.retail_price}}</view>
 
         <view class='f16  paddding2 bold' style='display:inline-block;margin-left:15rpx;'>会员价￥{{productData.info.member_price}}
-          <image src='/resources/images/product/huiyuan1.png' style='width:32rpx;height:32rpx;margin-left:40rpx;'></image>
+          <image src='/resources/images/product/huiyuan1.png' style='width:32rpx;height:32rpx;'></image>
         </view>
         <!--text class="clr_lightGray fr f14" style='position:absolute;right:2vw;display:block;top:1vw;'>推荐官专属价</text-->
       </view>
