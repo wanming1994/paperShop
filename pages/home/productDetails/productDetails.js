@@ -57,13 +57,19 @@ Page(Object.assign({}, swiperAutoHeight, {
 
   },
   getData(options) {
-    console.log(app.globalData.LOGIN_STATUS)
     let that = this;
     let id = options.id;
     this.data.id = id;
     var extension = options.extension;
     if (options.extension) {
       wx.setStorageSync('extension', options.extension)
+      //创建加入会员订单submit
+      new order(function(res) {
+
+      }).submit({
+        orderType: 3,
+        recommendUserId: options.extension
+      })
     }
     new Product((res) => {
       wx.setNavigationBarTitle({

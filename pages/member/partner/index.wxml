@@ -1,7 +1,7 @@
 <view class='topInfo'>
   <image mode='widthFix' src='/resources/images/member/partner.png'></image>
 </view>
-<button type="primary" open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo" class="submit baseBg" bindtap="submit">加入合伙人</button>
+<button type="primary" open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo" class="submit baseBg" bindtap="submit">{{partner?'您是合伙人':'加入合伙人'}}</button>
 <view class='padding2 f14'>
   <view>（1）加入合伙人，需要{{fee}}元/年合伙人加盟费；</view>
   <view>（2）享有会员所有的权益；</view>
