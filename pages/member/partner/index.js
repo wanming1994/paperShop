@@ -49,7 +49,7 @@ Page({
             }
           })
           return
-        } else if (!his.data.partner) {
+        } else if (!this.data.partner) {
           new Member(data => {
             wx.requestPayment({
               'timeStamp': data.data.timeStamp,
