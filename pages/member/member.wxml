@@ -1,7 +1,8 @@
 <view class="container">
   <view class="head f16" style="">
     <button class="headImg" open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo">
-      <open-data type="userAvatarUrl" style="overflow: hidden;" class="image"></open-data>
+      <!-- <open-data type="userAvatarUrl" style="overflow: hidden;" class="image"></open-data> -->
+      <image src="{{memberInfo.avatarUrl?memberInfo.avatarUrl:'/resources/images/noneimg.png'}}"></image>
     </button>
     <view class="details">
       <view class='f14'>

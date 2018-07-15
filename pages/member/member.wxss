@@ -52,6 +52,7 @@ page {
   border-radius: 50%;
   margin: auto 0;
   padding: 0;
+  z-index: 9999;
 }
 
 .headImg::after, ::before {

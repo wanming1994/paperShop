@@ -17,12 +17,15 @@
       <scroll-view class="bill_wrapper scrollWrap" scroll-y bindscroll="scroll" bindscrolltolower="lower" bindscrolltoupper="upper">
         <view class="bill_bd" wx:for="{{billList}}" wx:key="id" wx:for-item="item">
           <view class="bill_type">
-            <view class="" wx:if="{{item.type==0}}">口碑红包</view>
-            <view class="" wx:elif="{{item.type==1}}">消费</view>
+            <view class="" wx:if="{{item.type==0}}">消费积分</view>
+            <view class="" wx:elif="{{item.type==1}}">获得积分</view>
           </view>
           <view class="bill_date">
-            <view style="word-wrap:break-word;word-break:break-all;" wx:if="{{item.type==0}}">{{item.buyerNickName}}会员购物获得积分</view>
-            <view style="word-wrap:break-word;word-break:break-all;" wx:elif="{{item.type==1}}">{{item.buyerNickName}}兑换商品消费积分</view>
+            <view style="word-wrap:break-word;word-break:break-all;" wx:if="{{item.source==0}}">{{item.buyerNickName?item.buyerNickName:''}}消费</view>
+            <view style="word-wrap:break-word;word-break:break-all;" wx:elif="{{item.source==1}}">{{item.buyerNickName?item.buyerNickName:''}}下线购买奖励</view>
+            <view style="word-wrap:break-word;word-break:break-all;" wx:elif="{{item.source==2}}">{{item.buyerNickName?item.buyerNickName:''}}发展下线奖励</view>
+            <view style="word-wrap:break-word;word-break:break-all;" wx:elif="{{item.source==3}}">{{item.buyerNickName?item.buyerNickName:''}}合伙人奖励</view>
+            <view style="word-wrap:break-word;word-break:break-all;" wx:elif="{{item.source==4}}">{{item.buyerNickName?item.buyerNickName:''}}代理商奖励</view>
             <view style="font-size:24rpx;color:#666;">{{item.createTime}}</view>
           </view>
           <view class="bill_amount">

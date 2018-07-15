@@ -158,8 +158,8 @@ Page({
     }
   },
   bindgetuserinfo(e) {
-    let that = this
     console.log(e)
+    let that = this
     if (e.detail.errMsg.indexOf('fail') > -1) {
       wx.showToast({
         title: '请授权用户信息!',
@@ -178,20 +178,20 @@ Page({
         }).view()
       }).updateView({
         avatarUrl: e.detail.userInfo.avatarUrl,
-        nickName: e.detail.userInfo.nickName /*  */
+        nickName: e.detail.userInfo.nickName
       })
     }
   },
   //联系我们
   callUs: function() {
     wx.makePhoneCall({
-      phoneNumber: '0551-12345678',
+      phoneNumber: '18601282838',
       success(res) {
 
       },
       fail(err) {
         if (err.errMsg.indexOf('cancel') === -1) {
-          util.errShow('0551-12345678', 5000)
+          util.errShow('18601282838', 5000)
         }
 
       }
