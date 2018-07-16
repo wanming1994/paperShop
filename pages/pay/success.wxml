@@ -13,7 +13,7 @@
   <view class="successCont">
     <view class="lineItem">
       <view class="left clr_lightGray f14">支付类型</view>
-      <view class="right tr f16">微信支付</view>
+      <view class="right tr f16">{{data.fullCutPrice>0?积分支付:'微信支付'}}</view>
     </view>
     <view class="lineItem">
       <view class="left clr_lightGray f14">订单金额</view>
