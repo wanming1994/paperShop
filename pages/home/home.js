@@ -5,6 +5,7 @@ let swiperAutoHeight = require("../../template/swiper/swiper.js"),
   Cart = require("../../service/cart.js"),
   Coupon = require("../../service/coupon.js"),
   member = require("../../service/member.js"),
+  order = require("../../service/order.js"),
   Tenant = require("../../service/tenant.js"),
   Ad = require("../../service/ad.js"),
   app = getApp(),
@@ -56,6 +57,22 @@ Page(Object.assign({}, swiperAutoHeight, {
     })
   },
 
+  //加入购物车
+  addCart: function(e) {
+    var id = e.currentTarget.dataset.id;
+    new Cart(res => {
+      wx.showToast({
+        title: '加入成功',
+        icon: 'none'
+      })
+    }).add({
+      productId: id,
+      // speid: this.data.selectData.id,
+      count: 1,
+      type: 'cart'
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -76,7 +93,7 @@ Page(Object.assign({}, swiperAutoHeight, {
       wx.setStorageSync('extension', options.extension)
       //创建加入会员订单submit
       new order(function(res) {
-        
+
       }).submit({
         orderType: 3,
         recommendUserId: options.extension
