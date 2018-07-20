@@ -49,7 +49,9 @@ page {
 .continue ::after, ::before {
   display: none;
 }
-
+.cash_desc{
+  padding: 10rpx 0;
+}
 .cash_desc text {
   display: inline-block;
 }
