@@ -183,8 +183,8 @@
 }
 
 .b {
-  width: 750rpx;
-  padding: 0 6.25rpx;
+  width: 740rpx;
+  padding: 0 5rpx;
   height: auto;
   overflow: hidden;
 }
@@ -198,13 +198,13 @@
   height: auto;
   overflow: hidden;
   text-align: center;
-
   position: relative;
 }
 
-.b .item-b {
-  margin-left: 6.25rpx;
+.b .item image {
+  margin-left: 5rpx;
 }
+
 
 .b .addCart {
   width: 50rpx;

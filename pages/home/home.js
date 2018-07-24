@@ -78,6 +78,7 @@ Page(Object.assign({}, swiperAutoHeight, {
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var that = this
     if (app.globalData.LOGIN_STATUS) {
       this.getData(options)
     } else {
@@ -85,6 +86,14 @@ Page(Object.assign({}, swiperAutoHeight, {
         this.getData(options)
       })
     }
+    wx.getSystemInfo({
+      success: function(res) {
+        that.setData({
+          winWidth: res.windowWidth,
+          winHeight: res.windowHeight
+        })
+      }
+    })
   },
 
   getData: function(options) {

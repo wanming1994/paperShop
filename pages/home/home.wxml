@@ -1,49 +1,53 @@
 <import src="/template/swiper/swiper.wxml" />
-<view class="container">
-  <!-- <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+<scroll-view height="{{winHeight}}" scroll-y>
+  <view class="container">
+    <!-- <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{imgUrls}}">
       <swiper-item>
         <image src="{{item}}" class="slide-image" mode="widthFix" style="will-change:transform;width:100vw;"/>
       </swiper-item>
     </block>
   </swiper> -->
-  <!--template is="adSwiper" data="{{_swiper,name:'top',data:imgUrls,key:topImgs.key,fn:'adTap'}}"></template-->
+    <!--template is="adSwiper" data="{{_swiper,name:'top',data:imgUrls,key:topImgs.key,fn:'adTap'}}"></template-->
 
-  <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
-    <swiper-item wx:for="{{banner}}" wx:key="{{item.id}}">
-      <!--navigator url="{{item.link}}"-->
-      <image src="{{item.image_url}}" background-size="cover"></image>
-      <!--/navigator-->
-    </swiper-item>
-  </swiper>
+    <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000">
+      <swiper-item wx:for="{{banner}}" wx:key="{{item.id}}">
+        <!--navigator url="{{item.link}}"-->
+        <image src="{{item.image_url}}" background-size="cover"></image>
+        <!--/navigator-->
+      </swiper-item>
+    </swiper>
 
-  <block wx:for="{{categoryList}}" wx:key="item.id">
-    <view class='f14 tc categoryName'>
-      <text class="line"></text>
-      <text class="text">{{item.name}}</text>
-      <text class="line"></text>
-    </view>
-    <block wx:if='{{index==0}}'>
-      <view wx:for="{{item.goodsList}}" wx:key="pitem.id" wx:for-item="pitem" class='productList_one'>
-        <view class='break'></view>
-        <view class='imageTwo productList' bindtap='goProductDeatil' data-id="{{pitem.id}}">
-          <image src='{{pitem.list_pic_url}}' mode="widthFix"></image>
-        </view>
+    <block wx:for="{{categoryList}}" wx:key="item.id">
+      <view class='f14 tc categoryName'>
+        <text class="line"></text>
+        <text class="text">{{item.name}}</text>
+        <text class="line"></text>
       </view>
-    </block>
-    <block wx:if='{{index==1}}'>
-      <view class='b'>
-        <view wx:for="{{item.goodsList}}" wx:key="pitem.id" wx:for-item="pitem" class='item tl'>
-          <image class="img" src="{{pitem.list_pic_url}}" background-size="cover" bindtap='goProductDeatil' data-id="{{pitem.id}}"></image>
-          <text class="name overone">{{pitem.name}}</text>
-          <view class="price bold">￥{{pitem.retail_price}}
-            <text class="f12 bold clr_red" wx:if="{{pitem.member_price}}">会员价￥{{pitem.member_price}}</text>
-          </view>
-          <view class='addCart' bindtap='addCart' data-id="{{pitem.id}}">
-            <image src='/resources/images/tabBar/2.1.png'></image>
+      <block wx:if='{{index==0}}'>
+        <view wx:for="{{item.goodsList}}" wx:key="pitem.id" wx:for-item="pitem" class='productList_one'>
+          <view class='break'></view>
+          <view class='imageTwo productList' bindtap='goProductDeatil' data-id="{{pitem.id}}">
+            <image src='{{pitem.list_pic_url}}' lazy-load="true" mode="widthFix"></image>
           </view>
         </view>
-      </view>
+      </block>
+      <block wx:if='{{index==1}}'>
+
+        <view class='b'>
+          <view wx:for="{{item.goodsList}}" wx:key="pitem.id" wx:for-item="pitem" class='item tl'>
+            <image class="img" lazy-load="true" src="{{pitem.list_pic_url}}" background-size="cover" bindtap='goProductDeatil' data-id="{{pitem.id}}"></image>
+            <text class="name overone">{{pitem.name}}</text>
+            <view class="price bold">￥{{pitem.retail_price}}
+              <text class="f12 bold clr_red" wx:if="{{pitem.member_price}}">会员价￥{{pitem.member_price}}</text>
+            </view>
+            <view class='addCart' bindtap='addCart' data-id="{{pitem.id}}">
+              <image src='/resources/images/tabBar/2.1.png'></image>
+            </view>
+          </view>
+        </view>
+
+      </block>
     </block>
-  </block>
-</view>
+  </view>
+</scroll-view>
