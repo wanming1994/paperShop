@@ -67,7 +67,7 @@ Page(Object.assign({}, swiperAutoHeight, {
       })
     }).add({
       productId: id,
-      // speid: this.data.selectData.id,
+      speid: '-1',
       count: 1,
       type: 'cart'
     })
