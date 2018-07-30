@@ -80,7 +80,7 @@
   <view class="actionTitle border_bottom lineItem">
     <view class="left">
       <block wx:for="{{productList}}" wx:for-item="sitem" wx:key="id">
-        <image wx:if="{{selectData.id==sitem.id}}" src="{{sitem.pic_url||'../../../resources/images/noneimg.png'}}"></image>
+        <image wx:if="{{selectData.id==sitem.id}}" src="{{sitem.pic_url||productData.info.primary_pic_url||productData.info.list_pic_url}}"></image>
       </block>
     </view>
     <view class="center f14">
