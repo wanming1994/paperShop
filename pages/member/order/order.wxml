@@ -97,7 +97,8 @@
       <block wx:if="{{item.order_status == '0'}}">
         <!-- <view data-type="refund" data-info="{{item.id}}" catchtap="methodBtn">取消订单</view> -->
         <form bindsubmit="formSubmit" report-submit bindreset="formReset">
-          <button data-type="delete" catchtap="methodBtn" class="confirmBtn" data-info="{{item.id}}" style="border:1px solid #000;line-height:1.6;font-size:32rpx;margin:10px 10px;float:right;background:#fff;color:#000;">删除订单</button>
+          <!-- <button data-type="delete" catchtap="methodBtn" class="confirmBtn" data-info="{{item.id}}" style="border:1px solid #000;line-height:1.6;font-size:32rpx;margin:10px 10px;float:right;background:#fff;color:#000;">删除订单</button> -->
+          <button data-type="refund" catchtap="methodBtn" class="confirmBtn" data-info="{{item.id}}" style="border:1px solid #000;line-height:1.6;font-size:32rpx;margin:10px 10px;float:right;background:#fff;color:#000;">取消订单</button>
           <button data-type="waitpay" class="confirmBtn" form-type="submit" data-info="{{item.id}}" style="border:1px solid #d9d9d9;line-height:1.6;font-size:32rpx;margin:10px 10px;float:right;">立即支付</button>
         </form>
       </block>

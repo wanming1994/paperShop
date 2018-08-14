@@ -108,7 +108,7 @@ module.exports = class Order extends Ajax {
   }
 
   /**
-   * 取消订单
+   * 签收订单
    * orderId
    */
   confirm(data) {
