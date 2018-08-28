@@ -32,7 +32,7 @@
           </view>
         </view>
       </block>
-      <block wx:if='{{index==1}}'>
+      <block wx:elif='{{index==1}}'>
 
         <view class='b'>
           <view wx:for="{{item.goodsList}}" wx:key="pitem.id" wx:for-item="pitem" class='item tl'>
