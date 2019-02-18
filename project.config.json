@@ -1,7 +1,7 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -106,6 +106,36 @@
 					"name": "pages/home/productDetails/poster/poster",
 					"pathName": "pages/home/productDetails/poster/poster",
 					"query": "id=1181006"
+				},
+				{
+					"id": -1,
+					"name": "pages/test/test",
+					"pathName": "pages/test/test",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pages/member/cash/index",
+					"pathName": "pages/member/cash/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pages/home/productDetails/poster/poster",
+					"pathName": "pages/home/productDetails/poster/poster",
+					"query": "id=1181173"
+				},
+				{
+					"id": -1,
+					"name": "pages/member/partner/index",
+					"pathName": "pages/member/partner/index",
+					"query": ""
+				},
+				{
+					"id": 16,
+					"name": "pages/member/partner/index",
+					"pathName": "pages/home/home",
+					"query": "extension=520"
 				}
 			]
 		}
