@@ -44,6 +44,12 @@
         "selectedIconPath": "/resources/images/tabBar/1.1.png"
       },
       {
+        "pagePath": "pages/catalog/catalog",
+        "text": "分类",
+        "iconPath": "/resources/images/tabBar/category.png",
+        "selectedIconPath": "/resources/images/tabBar/category-sel.png"
+      },
+      {
         "pagePath": "pages/cart/cart",
         "text": "购物车",
         "iconPath": "/resources/images/tabBar/2.2.png",
