@@ -52,8 +52,9 @@ Page(Object.assign({}, swiperAutoHeight, {
   //商品详情
   goProductDeatil: function(e) {
     var id = e.currentTarget.dataset.id;
+    var promotionId = e.currentTarget.dataset.proid ? e.currentTarget.dataset.proid : ''
     util.navigateTo({
-      url: '/pages/home/productDetails/productDetails?id=' + id,
+      url: '/pages/home/productDetails/productDetails?id=' + id + '&promotionId=' + promotionId,
     })
   },
 
@@ -111,8 +112,94 @@ Page(Object.assign({}, swiperAutoHeight, {
     new Product(function(data) {
       that.setData({
         categoryList: data.data.categoryList,
-        banner: data.data.banner
+        banner: data.data.banner,
+        hotGoodsList: data.data.hotGoodsList
       })
+
+      var len = data.data.promotionList.length
+      if (len == 0) {
+        that.setData({
+          limitLength: true
+        })
+      } else {
+        that.setData({
+          limitLength: false
+        })
+      }
+
+      function time1() {
+        var limitsell = data.data.promotionList
+        for (var i = 0; i < limitsell.length; i++) {
+          // 活动是否已经开始
+          var totalSecond = limitsell[i].beginDate / 1000 - Date.parse(new Date()) / 1000;
+          // 活动是否已经结束
+          var endSecond = limitsell[i].endDate / 1000 - Date.parse(new Date()) / 1000;
+          // 秒数
+
+          if (totalSecond < 0 && endSecond > 0) {
+            var second = endSecond;
+          } else {
+            var second = totalSecond;
+          }
+
+          // 天数位
+          var day = Math.floor(second / 3600 / 24);
+          var dayStr = day.toString();
+          if (dayStr.length == 1) dayStr = '0' + dayStr;
+
+          // 小时位
+          var hr = Math.floor((second - day * 3600 * 24) / 3600);
+          var hrStr = hr.toString();
+          if (hrStr.length == 1) hrStr = '0' + hrStr;
+
+          // 分钟位
+          var min = Math.floor((second - day * 3600 * 24 - hr * 3600) / 60);
+          var minStr = min.toString();
+          if (minStr.length == 1) minStr = '0' + minStr;
+
+          // 秒位
+          var sec = second - day * 3600 * 24 - hr * 3600 - min * 60;
+          var secStr = sec.toString();
+          if (secStr.length == 1) secStr = '0' + secStr;
+          totalSecond--;
+          if (totalSecond < 0 && endSecond > 0) {
+            limitsell[i].txt = '马上秒'
+            limitsell[i].countDownDay = dayStr
+            limitsell[i].countDownHour = hrStr
+            limitsell[i].countDownMinute = minStr
+            limitsell[i].countDownSecond = secStr
+            that.setData({
+              limitsell: limitsell
+            });
+          } else if (totalSecond > 0) {
+            limitsell[i].txt = '即将开秒'
+            limitsell[i].countDownDay = dayStr
+            limitsell[i].countDownHour = hrStr
+            limitsell[i].countDownMinute = minStr
+            limitsell[i].countDownSecond = secStr
+
+            that.setData({
+              limitsell: limitsell
+            });
+          } else if (totalSecond < 0 && endSecond < 0) {
+            clearInterval(time1);
+            limitsell[i].txt = '去看看'
+            limitsell[i].countDownDay = '00'
+            limitsell[i].countDownHour = '00'
+            limitsell[i].countDownMinute = '00'
+            limitsell[i].countDownSecond = '00'
+            that.setData({
+              limitsell: limitsell
+            });
+          }
+        }
+        that.setData({
+          limitsell: limitsell,
+        })
+      }
+      time1();
+      var timer = setInterval(time1, 1000);
+
       // console.log(data)
     }).list()
   },

@@ -41,7 +41,8 @@ Page(Object.assign({}, swiperAutoHeight, {
     userScoreInput: 0, //付款使用积分
     scoreMax: 0, //可用积分
     selectData: {}, //选中规格
-    showShortcut: false
+    showShortcut: false,
+    activityProduct: false
   },
   catchActionMask(e) {
     return false;
@@ -61,6 +62,12 @@ Page(Object.assign({}, swiperAutoHeight, {
     let id = options.id;
     this.data.id = id;
     var extension = options.extension;
+    if (options.promotionId) {
+      this.data.promotionId = options.promotionId
+      this.setData({
+        activityProduct: true
+      })
+    }
     if (options.extension) {
       wx.setStorageSync('extension', options.extension)
       //创建加入会员订单submit
@@ -167,12 +174,13 @@ Page(Object.assign({}, swiperAutoHeight, {
 
   },
   paySubmitSel() {
+    var that = this
     if (!this.data.selectData.count) return
 
     new Cart(res => {
       if (this.data.buyType === 'buy') {
         util.navigateTo({
-          url: '/pages/pay/orderPay',
+          url: '/pages/pay/orderPay?promotionId=' + that.data.promotionId,
         })
       } else {
         this.toggleMask(false);
@@ -202,6 +210,7 @@ Page(Object.assign({}, swiperAutoHeight, {
       speid: this.data.selectData.id,
       count: this.data.selectData.count,
       type: this.data.buyType,
+      promotionId: that.data.promotionId ? that.data.promotionId : ''
     })
   },
   //立即购买确认按钮

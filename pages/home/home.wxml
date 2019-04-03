@@ -18,7 +18,61 @@
       </swiper-item>
     </swiper>
 
-    <block wx:for="{{categoryList}}" wx:key="item.id">
+    <view class='timeLimit ' hidden='{{limitLength}}'>
+      <view class='title f20 '>限时抢购
+        <text class='f16 timeLimit_tag '>惊爆秒杀价</text>
+      </view>
+      <view class='timeLimit_list '>
+        <block wx:for="{{limitsell}}" wx:key="id">
+          <view class='lineItem ' data-id='{{item.goodsId}}' data-proid="{{item.id}}" bindtap='goProductDeatil'>
+            <view class='left '>
+              <image style='width:27vw;height:27vw;' lazy-load src="{{item.goodsPic ? item.goodsPic:'/resources/images/noneimg.png '}}"></image>
+            </view>
+            <view class='center '>
+              <view>
+                <view class='name f14 overtwo '>{{item.name}}</view>
+                <view class='tag '>
+                  <!-- <text class='f10 '>限量{{item.personLimit}}件</text> -->
+                </view>
+              </view>
+              <view class='price '>
+                <text class='f20 clr_orange ' style='color:{{mainColor}} '>￥{{item.price}}</text>
+                <text class='f12 old_price ' hidden='{{item.price>=item.oriPrice}}'>原价￥{{item.originalPrice}}</text>
+                <text class='f14 clr_orange buy' style='color:{{mainColor}};border:1px solid {{mainColor}}' data-id='{{item.id}}'>{{item.txt}}</text>
+              </view>
+              <view class='time f10 tc'>
+                <text>{{item.countDownDay>0?item.countDownDay:0}}</text>天
+                <text>{{item.countDownHour}}</text>:
+                <text>{{item.countDownMinute}}</text>:
+                <text>{{item.countDownSecond}}</text>
+              </view>
+
+            </view>
+          </view>
+
+        </block>
+      </view>
+    </view>
+    <view>
+      <view class='f14 tc categoryName' style='border-bottom:0;'>
+        <text class="line"></text>
+        <text class="text">人气推荐</text>
+        <text class="line"></text>
+      </view>
+      <view class='b'>
+        <view wx:for="{{hotGoodsList}}" wx:key="pitem.id" wx:for-item="pitem" class='item tl'>
+          <image class="img" lazy-load="true" src="{{pitem.list_pic_url}}" background-size="cover" bindtap='goProductDeatil' data-id="{{pitem.id}}"></image>
+          <text class="name overone">{{pitem.name}}</text>
+          <view class="price bold">￥{{pitem.retail_price}}
+            <text class="f12 bold clr_red" wx:if="{{pitem.member_price}}">会员价￥{{pitem.member_price}}</text>
+          </view>
+          <view class='addCart' bindtap='addCart' data-id="{{pitem.id}}">
+            <image src='/resources/images/tabBar/2.1.png'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <block wx:for="{{categoryList}}" wx:key="item.id">
       <view class='f14 tc categoryName'>
         <text class="line"></text>
         <text class="text">{{item.name}}</text>
@@ -50,20 +104,20 @@
       </block>
       <block wx:else>
 
-              <view class='b'>
-                <view wx:for="{{item.goodsList}}" wx:key="pitem.id" wx:for-item="pitem" class='item tl'>
-                  <image class="img" lazy-load="true" src="{{pitem.list_pic_url}}" background-size="cover" bindtap='goProductDeatil' data-id="{{pitem.id}}"></image>
-                  <text class="name overone">{{pitem.name}}</text>
-                  <view class="price bold">￥{{pitem.retail_price}}
-                    <text class="f12 bold clr_red" wx:if="{{pitem.member_price}}">会员价￥{{pitem.member_price}}</text>
-                  </view>
-                  <view class='addCart' bindtap='addCart' data-id="{{pitem.id}}">
-                    <image src='/resources/images/tabBar/2.1.png'></image>
-                  </view>
-                </view>
-              </view>
+        <view class='b'>
+          <view wx:for="{{item.goodsList}}" wx:key="pitem.id" wx:for-item="pitem" class='item tl'>
+            <image class="img" lazy-load="true" src="{{pitem.list_pic_url}}" background-size="cover" bindtap='goProductDeatil' data-id="{{pitem.id}}"></image>
+            <text class="name overone">{{pitem.name}}</text>
+            <view class="price bold">￥{{pitem.retail_price}}
+              <text class="f12 bold clr_red" wx:if="{{pitem.member_price}}">会员价￥{{pitem.member_price}}</text>
+            </view>
+            <view class='addCart' bindtap='addCart' data-id="{{pitem.id}}">
+              <image src='/resources/images/tabBar/2.1.png'></image>
+            </view>
+          </view>
+        </view>
 
-            </block>
-    </block>
+      </block>
+    </block> -->
   </view>
 </scroll-view>

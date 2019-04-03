@@ -35,33 +35,33 @@
   </view>
 </view>
 
-<!-- <view class='f16  payStyleTitle' wx:if="{{selectDiscount.length>0}}">选择优惠方式：</view>
-<radio-group class="radio-group tc" bindchange="radioChange" wx:if="{{selectDiscount.length>0}}">
+<view class='f16  payStyleTitle' wx:if="{{selectDiscount.length>0 && !activityOrder}}">选择优惠方式：</view>
+<radio-group class="radio-group tc" bindchange="radioChange" wx:if="{{selectDiscount.length>0&&!activityOrder}}">
   <label class="radio f16" wx:for="{{selectDiscount}}" wx:key="id">
     <radio value="{{item.type}}" checked="{{item.type=='coupon'}}" color='#ffa73d' />{{item.name}}
   </label>
-</radio-group> -->
+</radio-group>
 
 
 
-<view class="section section_gap" wx:if="{{scoreMax>0 && defaultDiscount=='score'}}">
+<view class="section section_gap" wx:if="{{scoreMax>0 && defaultDiscount=='score' && !activityOrder}}">
   <view class="section__title f14 fl">是否使用积分(剩余
     <text class='f12 baseColor'>{{scoreMax}}分</text>)</view>
   <switch class='fr' name="switch" checked="{{usePoint}}" bindtap='clickUsePoint' />
 </view>
-<view class='border_bottom f14 word' wx:if="{{scoreMax>0 && defaultDiscount=='score'}}">
+<view class='border_bottom f14 word' wx:if="{{scoreMax>0 && defaultDiscount=='score' && !activityOrder}}">
   <view class='left'>使用积分(可用
     <text class='f12 baseColor'>{{canusePoint}}分</text>)</view>
   <view class='center tr'>
     <input placeholder="请输入使用积分数量" type='number' bindinput='userScoreInput' value='{{userScoreInput}}' />
   </view>
 </view>
-<view class='padding2 tr f12' wx:if="{{scoreMax>0 && defaultDiscount=='score'}}">积分可抵扣
+<view class='padding2 tr f12' wx:if="{{scoreMax>0 && defaultDiscount=='score' && !activityOrder}}">积分可抵扣
   <text class='baseColor'>{{canTransMoney}}元</text>
 </view>
 
 
-<view class='lineItem f14 lineItem_access' wx:if="{{couponList.length>0 && defaultDiscount=='coupon'}}" bindtap="toogleCouponSelect">
+<view class='lineItem f14 lineItem_access' wx:if="{{couponList.length>0 && defaultDiscount=='coupon' && !activityOrder}}" bindtap="toogleCouponSelect">
   <view class='center' style='flex-direction:row;justify-content:flex-start;'>优惠券
     <text style="background:#ffa73d;color:white;padding:0 20rpx;margin-left:20rpx;">{{couponList.length}}张可用</text>
   </view>
