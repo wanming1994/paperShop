@@ -196,5 +196,10 @@ Page({
 
       }
     })
+  },
+  goMember() {
+    wx.navigateTo({
+      url: 'join/join',
+    })
   }
 })

@@ -16,6 +16,7 @@
     "pages/pay/orderPay",
     "pages/pay/paySubit",
     "pages/member/member",
+    "pages/member/join/join",
     "pages/member/point/index",
     "pages/member/partner/index",
     "pages/member/getGoods/getGoods",

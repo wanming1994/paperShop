@@ -42,13 +42,19 @@
     <view class="right"></view>
   </view> -->
 
-  <view class="memberRadius lineItem lineItem_access f14" style='padding:3%;' bindtap='goShare'>
+  <view class="lineItem lineItem_access borderA f14" style='padding:3%;margin-top:20rpx;border-top-left-radius:10rpx;border-top-right-radius:10rpx;' bindtap='goShare'>
     <view class="center">分享推广</view>
     <view class="clr_lightGray"></view>
     <view class="right"></view>
   </view>
 
-  <view class="memberRadius lineItem lineItem_access f14" style='padding:3%;' bindtap='goPartner'>
+  <view class="lineItem lineItem_access borderA f14" style='padding:3%;' bindtap='goMember'>
+    <view class="center">加入会员</view>
+    <view class="clr_lightGray"></view>
+    <view class="right"></view>
+  </view>
+
+  <view class="lineItem lineItem_access f14" style='padding:3%;border-bottom-left-radius:10rpx;border-bottom-right-radius:10rpx;' bindtap='goPartner'>
     <view class="center">加入合伙人</view>
     <view class="clr_lightGray"></view>
     <view class="right"></view>
