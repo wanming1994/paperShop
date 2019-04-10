@@ -7,18 +7,11 @@ Page({
   data: {
     fee: 0
   },
-  onLoad: function (info) {
-    new Member(res => {
-      this.setData({
-        fee: res.data.fee
-      })
-    }).applyPartner()
-  },
+  onLoad: function(info) {},
 
-  onShow: function () {
+  onShow: function() {
     new Member(res => {
       this.setData({
-        partner: res.data.partner,
         userIsMember: res.data.userIsMember
       })
     }).view()
@@ -35,21 +28,7 @@ Page({
       })
     } else {
       new Member(res => {
-        if (!this.data.userIsMember) {
-          wx.showModal({
-            title: '提示',
-            content: '您还不是会员，完成一笔订单即可成为会员',
-            showCancel: false,
-            success: function (res) {
-              if (res.confirm) {
-                wx.switchTab({
-                  url: '/pages/home/home',
-                })
-              }
-            }
-          })
-          return
-        } else if (!this.data.partner) {
+        if (this.data.userIsMember) {
           new Member(data => {
             wx.requestPayment({
               'timeStamp': data.data.timeStamp,
@@ -57,36 +36,29 @@ Page({
               'package': data.data.package,
               'signType': 'MD5',
               'paySign': data.data.paySign,
-              'success': function (res) {
+              'success': function(res) {
                 wx.showToast({
-                  title: '恭喜您成为合伙人',
+                  title: '恭喜您成为会员',
                   icon: 'success',
                   duration: 1000,
-                  success: function () {
+                  success: function() {
                     new Member(res => {
                       this.setData({
-                        partner: res.data.partner,
                         userIsMember: res.data.userIsMember
                       })
                     }).view()
                   }
                 })
               },
-              'fail': function (res) { }
+              'fail': function(res) {}
             })
-          }).payPartner()
-        } else if (this.data.partner) {
+          }).payMember()
+        } else {
           wx.showToast({
-            title: '您已经是合伙人',
+            title: '您已经是会员',
             icon: 'none'
           })
         }
-
-
-
-
-
-
       }).updateView({
         avatarUrl: e.detail.userInfo.avatarUrl,
         nickName: e.detail.userInfo.nickName /*  */
@@ -95,7 +67,7 @@ Page({
   },
 
 
-  submit: function () { //提交
+  submit: function() { //提交
 
   }
 })

@@ -167,7 +167,7 @@ module.exports = class Member extends Ajax {
   /**
    * 会员支付
    */
-  payPartner(data) {
+  payMember(data) {
     super.post({
       url: "user/payMember",
       data: data
