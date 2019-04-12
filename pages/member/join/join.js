@@ -7,7 +7,13 @@ Page({
   data: {
     fee: 0
   },
-  onLoad: function(info) {},
+  onLoad: function(info) {
+    new Member(res => {
+      this.setData({
+        fee: res.data.fee
+      })
+    }).applyMember()
+  },
 
   onShow: function() {
     new Member(res => {
@@ -28,7 +34,7 @@ Page({
       })
     } else {
       new Member(res => {
-        if (this.data.userIsMember) {
+        if (!this.data.userIsMember) {
           new Member(data => {
             wx.requestPayment({
               'timeStamp': data.data.timeStamp,

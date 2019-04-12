@@ -165,6 +165,16 @@ module.exports = class Member extends Ajax {
   }
 
   /**
+   * 获取huiyuan价格
+   */
+  applyMember(data) {
+    super.post({
+      url: "user/applyMember",
+      data: data
+    })
+  }
+  
+  /**
    * 会员支付
    */
   payMember(data) {
