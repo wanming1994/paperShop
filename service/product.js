@@ -4,9 +4,9 @@ module.exports = class Product extends Ajax {
 
 
   /**
-  * 商品热销列表
-  *
-  */
+   * 商品热销列表
+   *
+   */
   list(data) {
     super.get({
       url: 'index/index',
@@ -78,9 +78,9 @@ module.exports = class Product extends Ajax {
   }
 
   /**
- * 分类
- * id 商品
- */
+   * 分类
+   * id 商品
+   */
   catalogIndex(data) {
     super.get({
       url: 'catalog/index',
@@ -111,5 +111,17 @@ module.exports = class Product extends Ajax {
       data: data
     })
   }
+
+  /**
+   * 首页限时抢购商品
+   */
+  indexPromotion(data) {
+    super.get({
+      url: 'Promotion/list',
+      hideErrorTip: true,
+      data: data
+    })
+  }
+
 
 }

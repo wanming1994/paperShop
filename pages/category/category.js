@@ -1,4 +1,5 @@
 let Product = require("../../service/product.js"),
+  Cart = require("../../service/cart.js"),
   app = getApp(),
   util = require("../../utils/util.js")
 
@@ -15,7 +16,7 @@ Page({
     page: 1,
     size: 10000
   },
-  onLoad: function (options) {
+  onLoad: function(options) {
     // 页面初始化 options为页面跳转所带来的参数
     var that = this;
     if (options.id) {
@@ -25,7 +26,7 @@ Page({
     }
 
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         that.setData({
           scrollHeight: res.windowHeight
         });
@@ -36,7 +37,7 @@ Page({
     this.getCategoryInfo();
 
   },
-  getCategoryInfo: function () {
+  getCategoryInfo: function() {
     let that = this;
     new Product((res) => {
       that.setData({
@@ -63,32 +64,47 @@ Page({
       id: this.data.id
     })
   },
-  onReady: function () {
+  onReady: function() {
     // 页面渲染完成
   },
-  onShow: function () {
+  onShow: function() {
     // 页面显示
     console.log(1);
   },
-  onHide: function () {
+  onHide: function() {
     // 页面隐藏
   },
-  getGoodsList: function () {
+  //加入购物车
+  addCart: function(e) {
+    var id = e.currentTarget.dataset.id;
+    new Cart(res => {
+      wx.showToast({
+        title: '加入成功',
+        icon: 'none'
+      })
+    }).add({
+      productId: id,
+      speid: '-1',
+      count: 1,
+      type: 'cart'
+    })
+  },
+  getGoodsList: function() {
     var that = this;
-    new Product((res)=>{
+    new Product((res) => {
       that.setData({
         goodsList: res.data.data,
       });
     }).categoryList({
-      categoryId: that.data.id, 
-      page: that.data.page, 
-      size: that.data.size 
+      categoryId: that.data.id,
+      page: that.data.page,
+      size: that.data.size
     })
   },
-  onUnload: function () {
+  onUnload: function() {
     // 页面关闭
   },
-  switchCate: function (event) {
+  switchCate: function(event) {
     if (this.data.id == event.currentTarget.dataset.id) {
       return false;
     }

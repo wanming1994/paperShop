@@ -1,5 +1,3 @@
-// pages/home/home.js
-
 let swiperAutoHeight = require("../../template/swiper/swiper.js"),
   Product = require("../../service/product.js"),
   Cart = require("../../service/cart.js"),
@@ -109,6 +107,10 @@ Page(Object.assign({}, swiperAutoHeight, {
         recommendUserId: options.extension
       })
     }
+    new Product(res=>{
+
+    }).indexPromotion()
+
     new Product(function(data) {
       that.setData({
         categoryList: data.data.categoryList,
