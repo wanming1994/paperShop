@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/home/seckill/index",
     "pages/member/poster/poster",
     "pages/cart/cart",
     "pages/category/category",
