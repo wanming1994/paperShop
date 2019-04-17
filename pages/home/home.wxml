@@ -21,6 +21,7 @@
     <view class='timeLimit ' hidden='{{limitLength}}'>
       <view class='title f20 '>限时抢购
         <text class='f16 timeLimit_tag '>惊爆秒杀价</text>
+        <image src='http://cdn.tiaohuo.com/upload/image/201904/02843b64-2d78-4eae-8c90-c1c90dece589.png' style='width:60rpx;height:60rpx;float:right;' bindtap='nextLimit'></image>
       </view>
       <view class='timeLimit_list '>
         <block wx:for="{{limitsell}}" wx:key="id">
