@@ -104,10 +104,12 @@ Page(Object.assign({}, swiperAutoHeight, {
       setTimeout(res => {
         this.setData({
           pageLoad: true
+
         })
       }, 200)
     }).view({
-      id: id
+      id: id,
+      promotionId: options.promotionId
     })
   },
   checkout(e) {

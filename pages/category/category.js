@@ -37,6 +37,14 @@ Page({
     this.getCategoryInfo();
 
   },
+  //商品详情
+  goProductDeatil: function(e) {
+    var id = e.currentTarget.dataset.id;
+    var promotionId = e.currentTarget.dataset.proid ? e.currentTarget.dataset.proid : ''
+    util.navigateTo({
+      url: '/pages/home/productDetails/productDetails?id=' + id + '&promotionId=' + promotionId,
+    })
+  },
   getCategoryInfo: function() {
     let that = this;
     new Product((res) => {

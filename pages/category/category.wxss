@@ -172,8 +172,8 @@
 .item .name {
   display: block;
   width: 320rpx;
-  height: 35rpx;
-  margin: 11.5rpx 0 22rpx 0;
+  /* height: 35rpx; */
+  margin: 11.5rpx 0;
   /* text-align: center; */
   overflow: hidden;
   /* padding: 0 20rpx; */
