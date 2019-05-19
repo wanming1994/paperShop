@@ -26,7 +26,7 @@
     <view class="lineItem padding0" style='border-top:1px solid #cfcfcf;border-bottom:1px solid #cfcfcf;'>
       <view class=" lineH_two" style='align-items:center;width:100%;position:relative;line-height:55rpx;'>
         <view class="clr_lightGray f20 bold clr_red" wx:if="{{activityProduct}}" style='margin-left:2vw;'>秒杀价￥{{productData.info.retail_price}}</view>
-        <view class="clr_lightGray f14" wx:if="{{!activityProduct}}" style='margin-left:2vw;'>市场价￥{{productData.info.retail_price}}</view>
+        <view class="clr_lightGray f14" wx:if="{{!activityProduct}}" style='margin-left:2vw;'>￥{{productData.info.retail_price}}</view>
 
         <view class='f16  paddding2 bold' style='display:inline-block;margin-left:15rpx;'>会员价￥{{productData.info.member_price}}
           <image src='/resources/images/product/huiyuan1.png' style='width:32rpx;height:32rpx;'></image>
