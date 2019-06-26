@@ -109,7 +109,7 @@ Page(Object.assign({}, swiperAutoHeight, {
       }, 200)
     }).view({
       id: id,
-      promotionId: options.promotionId
+      promotionId: options.promotionId ? options.promotionId : ''
     })
   },
   checkout(e) {
@@ -314,6 +314,7 @@ Page(Object.assign({}, swiperAutoHeight, {
 
   onShareAppMessage: function(res) {
     var that = this;
+    console.log('pages/home/productDetails/productDetails?id=' + that.data.id + '&extension=' + app.globalData.memberInfo.userId)
 
     if (res.from === 'button') {
       this.setData({
