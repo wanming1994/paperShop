@@ -63,7 +63,6 @@ Page({
         imageUrl: '/resources/images/member/share.jpg',
         path: '/pages/home/home?extension=' + app.globalData.memberInfo.userId,
         success: function (res) {
-          console.log('/pages/home/home?extension=' + app.globalData.memberInfo.userId)
           // 转发成功
           wx.showToast({
             title: '转发成功',
@@ -77,7 +76,7 @@ Page({
 
     }
     return {
-      title: '邀请您加入大王纸尿裤',
+      title: '邀请您加入天然壹家',
       imageUrl: '/resources/images/member/share.jpg',
       path: '/pages/home/home?extension=' + app.globalData.memberInfo.userId,
       success: function (res) {
