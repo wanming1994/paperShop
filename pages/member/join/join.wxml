@@ -3,8 +3,6 @@
 </view>
 <button type="primary" open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo" class="submit baseBg" bindtap="submit">{{userIsMember?'您已是会员':'加入会员'}}</button>
 <view class='padding2 f14'>
-  <view>（1）会员费{{fee}}元/年；</view>
-  <view>（2）在平台消费享受会员价；</view>
-  <view>（3）会员推荐成功，获得电子购物券（随机5-10元）；</view>
-  <view>（4）电子购物券的使用，商品会员价-购物券商品利润（商品供货价），方可使用</view>
+  <view>1、会员费99元/年；</view>
+  <view>2、在平台消费享受会员价。</view>
 </view>

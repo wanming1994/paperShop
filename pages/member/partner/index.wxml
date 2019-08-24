@@ -3,9 +3,9 @@
 </view>
 <button type="primary" open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo" class="submit baseBg" bindtap="submit">{{partner?'您是合伙人':'加入合伙人'}}</button>
 <view class='padding2 f14'>
-  <view>（1）加入合伙人，需要{{fee}}元/年合伙人加盟费；</view>
-  <view>（2）享有会员所有的权益；</view>
-  <view>（3）享有合伙人分红；</view>
-  <view>（4）每月至少推荐5人，每年不少于60人；</view>
-  <view>（5）合伙人推荐合伙人，推荐人只拿推荐奖金，不再参于此合伙人团队的合伙人分红，但基本推荐奖金可以继续拿到；</view>
+  <view>1、合伙人收费388元/年；</view>
+  <view>2、在平台消费享受最优价；</view>
+  <view>3、直推的合伙人，得合伙费的70%；</view>
+  <view>4、直推的会员，得会员费的70%；</view>
+  <view>5、直推的会员购买商品，会员价与供货价的差价的70%归合伙人所得。</view>
 </view>

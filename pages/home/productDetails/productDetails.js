@@ -42,7 +42,8 @@ Page(Object.assign({}, swiperAutoHeight, {
     scoreMax: 0, //可用积分
     selectData: {}, //选中规格
     showShortcut: false,
-    activityProduct: false
+    activityProduct: false,
+    promotionId: ''
   },
   catchActionMask(e) {
     return false;
@@ -63,7 +64,8 @@ Page(Object.assign({}, swiperAutoHeight, {
     this.data.id = id;
     var extension = options.extension;
     if (options.promotionId) {
-      this.data.promotionId = options.promotionId
+      console.log(options.promotionId)
+      this.data.promotionId = options.promotionId ? options.promotionId : ''
       this.setData({
         activityProduct: true
       })

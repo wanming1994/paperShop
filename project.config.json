@@ -11,10 +11,6 @@
 	"libVersion": "2.1.0",
 	"appid": "wx833eb63309af7724",
 	"projectname": "%E5%A4%A9%E7%84%B6%E5%A3%B9%E5%AE%B6",
-	"svr": "",
-	"client": "",
-	"qcloudRoot": "",
-	"miniprogramRoot": "",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -33,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 17,
 			"list": [
 				{
 					"id": 0,
@@ -136,6 +132,12 @@
 					"name": "pages/member/partner/index",
 					"pathName": "pages/home/home",
 					"query": "extension=520"
+				},
+				{
+					"id": -1,
+					"name": "sp",
+					"pathName": "pages/home/productDetails/productDetails",
+					"query": "id=1181384&extension=1304"
 				}
 			]
 		}
