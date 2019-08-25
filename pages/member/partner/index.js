@@ -35,21 +35,22 @@ Page({
       })
     } else {
       new Member(res => {
-        if (!this.data.userIsMember) {
-          wx.showModal({
-            title: '提示',
-            content: '您还不是会员，完成一笔订单即可成为会员',
-            showCancel: false,
-            success: function(res) {
-              if (res.confirm) {
-                wx.switchTab({
-                  url: '/pages/home/home',
-                })
-              }
-            }
-          })
-          return
-        } else if (!this.data.partner) {
+        // if (!this.data.userIsMember) {
+        //   wx.showModal({
+        //     title: '提示',
+        //     content: '您还不是会员，完成一笔订单即可成为会员',
+        //     showCancel: false,
+        //     success: function(res) {
+        //       if (res.confirm) {
+        //         wx.switchTab({
+        //           url: '/pages/home/home',
+        //         })
+        //       }
+        //     }
+        //   })
+        //   return
+        // } else 
+        if (!this.data.partner) {
           new Member(data => {
             wx.requestPayment({
               'timeStamp': data.data.timeStamp,
